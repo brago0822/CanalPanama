@@ -159,9 +159,9 @@ CREATE TABLE  "Buque"
 	"K_NUM_SERIE" NUMBER(8) NOT NULL,    -- Es el identificador del barco, numero unico que se asigna a cada uno.
 	"K_TIPO_CARGA" NUMBER(4) NOT NULL,    -- Llave foranea que representa el tipo de carga que transporta el buque
 	"K_TIPO_BUQUE" NUMBER(4) NOT NULL,    -- Llave foranea que muestra  el tipo de buque para un buque
-	"V_BEAM" NUMBER(4,2) NOT NULL,    -- Medida de ancho del buque en metros
-	"V_LOA" NUMBER(4,2) NOT NULL,    -- Mide la longitud total del buque en metros
-	"V_CARGA_MAX" NUMBER(6,2) NOT NULL    -- Peso de la carga maxima que puede transportar el buque
+	"V_BEAM" NUMBER(6,2) NOT NULL,    -- Medida de ancho del buque en metros
+	"V_LOA" NUMBER(6,2) NOT NULL,    -- Mide la longitud total del buque en metros
+	"V_CARGA_MAX" NUMBER(10,2) NOT NULL    -- Peso de la carga maxima que puede transportar el buque
 )
 ;
 
