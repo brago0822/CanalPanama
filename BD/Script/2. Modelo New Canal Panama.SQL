@@ -7,1114 +7,1122 @@
 /* Drop Tables */
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Agente" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Agente CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Buque" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Buque CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Cancelacion_Reserva" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Cancelacion_Reserva CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Compania" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Compania CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Cupo" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Cupo CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Detalle_Tarifa" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Detalle_Tarifa CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Medio_Pago" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Medio_Pago CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Oferta" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Oferta CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Pago" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Pago CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Parametro" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Parametro CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Paso" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Paso CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Periodo" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Periodo CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Persona" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Persona CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Pogramacion_Diaria" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Pogramacion_Diaria CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Puerto" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Puerto CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Reserva" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Reserva CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Subasta" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Subasta CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Tarifa" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Tarifa CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Tipo_Parametro" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Tipo_Parametro CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "TipoBuque" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   TipoBuque CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "TipoCarga" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   TipoCarga CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Tripulacion" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Tripulacion CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 begin
-	EXECUTE IMMEDIATE 'DROP TABLE   "Tripulante" CASCADE CONSTRAINTS';
+	EXECUTE IMMEDIATE 'DROP TABLE   Tripulante CASCADE CONSTRAINTS';
 	EXCEPTION WHEN OTHERS THEN NULL;
 end;  
 /
 
 /* Create Tables */
 
-CREATE TABLE  "Agente"
+CREATE TABLE  Agente
 (
-	"K_ID_AGENTE" NUMBER(8) NOT NULL,    -- PK: Identificador del agente, codigo que ofrece el canal de panama a los encargados de los buques
-	"K_ID_COMPANIA" VARCHAR(25) NOT NULL,    -- FK: Llave foranea de la compania a la que pertenece el agente
-	"K_ID_PERSONA" NUMBER(8) NOT NULL    -- FK: Llave foranea que relaciona los datos de la persona para el agente
+	K_ID_AGENTE NUMBER(8) NOT NULL,    -- PK: Identificador del agente, codigo que ofrece el canal de panama a los encargados de los buques
+	K_ID_COMPANIA VARCHAR(25) NOT NULL,    -- FK: Llave foranea de la compania a la que pertenece el agente
+	K_ID_PERSONA NUMBER(8) NOT NULL    -- FK: Llave foranea que relaciona los datos de la persona para el agente
 )
 ;
 
-CREATE TABLE  "Buque"
+CREATE TABLE  Buque
 (
-	"K_NUM_SERIE" NUMBER(8) NOT NULL,    -- Es el identificador del barco, numero unico que se asigna a cada uno.
-	"K_TIPO_CARGA" NUMBER(4) NOT NULL,    -- Llave foranea que representa el tipo de carga que transporta el buque
-	"K_TIPO_BUQUE" NUMBER(4) NOT NULL,    -- Llave foranea que muestra  el tipo de buque para un buque
-	"V_BEAM" NUMBER(6,2) NOT NULL,    -- Medida de ancho del buque en metros
-	"V_LOA" NUMBER(6,2) NOT NULL,    -- Mide la longitud total del buque en metros
-	"V_CARGA_MAX" NUMBER(10,2) NOT NULL    -- Peso de la carga maxima que puede transportar el buque
+	K_NUM_SERIE NUMBER(8) NOT NULL,    -- Es el identificador del barco, numero unico que se asigna a cada uno.
+	K_TIPO_CARGA NUMBER(4) NOT NULL,    -- Llave foranea que representa el tipo de carga que transporta el buque
+	K_TIPO_BUQUE NUMBER(4) NOT NULL,    -- Llave foranea que muestra  el tipo de buque para un buque
+	V_BEAM NUMBER(6,2) NOT NULL,    -- Medida de ancho del buque en metros
+	V_LOA NUMBER(6,2) NOT NULL,    -- Mide la longitud total del buque en metros
+	V_CARGA_MAX NUMBER(10,2) NOT NULL    -- Peso de la carga maxima que puede transportar el buque
 )
 ;
 
-CREATE TABLE  "Cancelacion_Reserva"
+CREATE TABLE  Cancelacion_Reserva
 (
-	"K_CANCELACION" NUMBER(10) NOT NULL,    -- Identificador Primario de la Tabla CANCELACI�N
-	"F_CANCELACION" DATE NOT NULL,    -- Fecha de la cancelaci�n de la Reserva
-	"V_DIAS_ANTELACION" NUMBER(5) NULL,    -- Registro derivado del n�mero de d�as de antelaci�n a la fecha de arrivo de la reserva, en el que se cancel� la llamada
-	"ID_AGENTE" NUMBER(10) NOT NULL,    -- ID del agente que cancela la reserva
-	"K_RESERVA" NUMBER(8) NULL    -- IDENTIFICADOR DE LA RESERVA QUE FUE CANCELADA
+	K_CANCELACION NUMBER(10) NOT NULL,    -- Identificador Primario de la Tabla CANCELACI�N
+	F_CANCELACION DATE NOT NULL,    -- Fecha de la cancelaci�n de la Reserva
+	V_DIAS_ANTELACION NUMBER(5) NULL,    -- Registro derivado del n�mero de d�as de antelaci�n a la fecha de arrivo de la reserva, en el que se cancel� la llamada
+	ID_AGENTE NUMBER(10) NOT NULL,    -- ID del agente que cancela la reserva
+	K_RESERVA NUMBER(8) NULL    -- IDENTIFICADOR DE LA RESERVA QUE FUE CANCELADA
 )
 ;
 
-CREATE TABLE  "Compania"
+CREATE TABLE  Compania
 (
-	"K_ID_CLIENTE" VARCHAR(25) NOT NULL,    -- Identificador que representa a la compania otorgado por el canal de panama
-	"N_COD_CLIENTE" VARCHAR2(50) NOT NULL,    -- C�digo asignado al cliente por el sistema para controlar el ranking del mismo
-	"N_NOMBRE" VARCHAR(20) NOT NULL,    -- Nombre de la compania que realizar� el paso por en Canal
-	"Q_TELEFONO" NUMBER(10) NULL,    -- Tel�fono de contacto de la Compa��a
-	"N_DIRECCION" VARCHAR2(50) NULL,    -- Direcci�n de Ubicaci�n Principal de la Compa��a
-	"N_PAIS" VARCHAR2(50) NOT NULL,    -- Pa�s de Or�gen de la Compa��a
-	"N_NIT" VARCHAR2(50) NULL
+	K_ID_CLIENTE VARCHAR(25) NOT NULL,    -- Identificador que representa a la compania otorgado por el canal de panama
+	N_COD_CLIENTE VARCHAR2(50) NOT NULL,    -- C�digo asignado al cliente por el sistema para controlar el ranking del mismo
+	N_NOMBRE VARCHAR(20) NOT NULL,    -- Nombre de la compania que realizar� el paso por en Canal
+	Q_TELEFONO NUMBER(10) NULL,    -- Tel�fono de contacto de la Compa��a
+	N_DIRECCION VARCHAR2(50) NULL,    -- Direcci�n de Ubicaci�n Principal de la Compa��a
+	N_PAIS VARCHAR2(50) NOT NULL,    -- Pa�s de Or�gen de la Compa��a
+	N_NIT VARCHAR2(50) NULL
 )
 ;
 
-CREATE TABLE  "Cupo"
+CREATE TABLE  Cupo
 (
-	"K_CUPO" NUMBER(10) NOT NULL,    -- Identificador Primario del cupo
-	"N_TIPO_ESCLUSA" VARCHAR2(50) NOT NULL,    -- Tipo de escusa que usar� el cupo abierto ('NEOPANAMAX','SUPER','REGULAR')
-	"N_SENTIDO" VARCHAR2(50) NULL,    -- Sentido o direcci�n para el paso del buque ('NORTE','SUR')
-	"F_CUPO" DATE NULL    -- Fecha para la cu�l se creo el cupo, es la fecha en la que pasar� el buque
+	K_CUPO NUMBER(10) NOT NULL,    -- Identificador Primario del cupo
+	N_TIPO_ESCLUSA VARCHAR2(50) NOT NULL,    -- Tipo de escusa que usará el cupo abierto ('NEOPANAMAX','SUPER','REGULAR')
+	N_SENTIDO VARCHAR2(50) NULL,    -- Sentido o dirección para el paso del buque ('NORTE','SUR')
+	F_CUPO DATE NULL,    -- Fecha para la cuál se creo el cupo, es la fecha en la que pasará el buque
+	N_TIPO_CUPO VARCHAR2(50) NOT NULL    -- Tipo de cupo que puede ser NORMAL o SUBASTADO
 )
 ;
 
-CREATE TABLE  "Detalle_Tarifa"
+CREATE TABLE  Detalle_Tarifa
 (
-	"K_DETALLE_TARIFA" NUMBER(10) NOT NULL,    -- Identificador Principal
-	"K_TARIFA" NUMBER(10) NOT NULL,    -- Llave for�nea de Tarifa
-	"K_PARAMETRO" NUMBER(10) NOT NULL    -- Llave Primaria del tipo par�metro
+	K_DETALLE_TARIFA NUMBER(10) NOT NULL,    -- Identificador Principal
+	K_TARIFA NUMBER(10) NOT NULL,    -- Llave for�nea de Tarifa
+	K_PARAMETRO NUMBER(10) NOT NULL    -- Llave Primaria del tipo par�metro
 )
 ;
 
-CREATE TABLE  "Medio_Pago"
+CREATE TABLE  Medio_Pago
 (
-	"K_MEDIO_PAGO" NUMBER(3) NOT NULL,    -- Identificador del tipo de pago
-	"N_NOMBRE" VARCHAR2(50) NOT NULL,    -- Nombre del medio de pago
-	"N_DESCRIPCION" VARCHAR(100) NOT NULL    -- Describe el medio de pago en especifico del pago
+	K_MEDIO_PAGO NUMBER(3) NOT NULL,    -- Identificador del tipo de pago
+	N_NOMBRE VARCHAR2(50) NOT NULL,    -- Nombre del medio de pago
+	N_DESCRIPCION VARCHAR(100) NOT NULL    -- Describe el medio de pago en especifico del pago
 )
 ;
 
-CREATE TABLE  "Oferta"
+CREATE TABLE  Oferta
 (
-	"K_OFERTA" NUMBER(5) NOT NULL,    -- Identificador de la oferta
-	"K_SUBASTA" VARCHAR(6) NOT NULL,    -- Llave foranea que relaciona la oferta para la subasta de un cupo
-	"V_OFERTA" NUMBER(6,2) NOT NULL,    -- Valor de la oferta que va a realizar el agente para un cupo
-	"F_OFERTA" DATE NOT NULL,    -- Fecha en la cual el agente hace la oferta para el cupo subastado
-	"K_IDAGENTE" NUMBER(8) NOT NULL    -- Llave foranea que relaciona la oferta con el respectivo agente que la realizo 
+	K_OFERTA NUMBER(5) NOT NULL,    -- Identificador de la oferta
+	K_SUBASTA VARCHAR(6) NOT NULL,    -- Llave foranea que relaciona la oferta para la subasta de un cupo
+	V_OFERTA NUMBER(6,2) NOT NULL,    -- Valor de la oferta que va a realizar el agente para un cupo
+	F_OFERTA DATE NOT NULL,    -- Fecha en la cual el agente hace la oferta para el cupo subastado
+	K_IDAGENTE NUMBER(8) NOT NULL    -- Llave foranea que relaciona la oferta con el respectivo agente que la realizo 
 )
 ;
 
-CREATE TABLE  "Pago"
+CREATE TABLE  Pago
 (
-	"K_ID_PAGO" NUMBER(10) NOT NULL,    -- Identificador del numero de pago para una tarifa
-	"F_FECHA_PAGO" DATE NOT NULL,    -- Fecha de cuando se realizo el pago
-	"K_MEDIO_PAGO" NUMBER(3) NOT NULL,    -- Llave foranea que relaciona el tipo de pago con el pago
-	"K_TARIFA" NUMBER(10) NOT NULL    -- Llave for�nea de la tarifa que va a ser pagada
+	K_ID_PAGO NUMBER(10) NOT NULL,    -- Identificador del numero de pago para una tarifa
+	F_FECHA_PAGO DATE NOT NULL,    -- Fecha de cuando se realizo el pago
+	K_MEDIO_PAGO NUMBER(3) NOT NULL,    -- Llave foranea que relaciona el tipo de pago con el pago
+	K_TARIFA NUMBER(10) NOT NULL    -- Llave for�nea de la tarifa que va a ser pagada
 )
 ;
 
-CREATE TABLE  "Parametro"
+CREATE TABLE  Parametro
 (
-	"K_PARAMETRO" NUMBER(8) NOT NULL,    -- Identificador del par�metro
-	"N_NOMBRE" VARCHAR2(50) NOT NULL,    -- Nombre que se le asigna al par�metro
-	"V_RANGO_INI" NUMBER(8,2) NOT NULL,    -- Rango inicial para el valor que se establece
-	"V_RANGO_FIN" NUMBER(8,2) NOT NULL,    -- Rango inicial para el valor que se establece
-	"K_TIPO_PARAMETRO" NUMBER(8) NOT NULL,    -- Tipo de Par�metro seg�n la tabla Tipo_Parametro
-	"V_TARIFA_PARAMETRO" NUMBER(8,2) NOT NULL,    -- Tarifa Base establecida para el par�metro del tipo de tarifa indicado
-	"F_VIGENCIA_INI" DATE NULL,    -- Vigencia Inicial para la tarifa seg�n el par�metro establecido
-	"F_VIGENCIA_FIN" DATE NULL    -- Vigencia final para la tarifa seg�n el par�metro establecido
+	K_PARAMETRO NUMBER(8) NOT NULL,    -- Identificador del par�metro
+	N_NOMBRE VARCHAR2(50) NOT NULL,    -- Nombre que se le asigna al par�metro
+	V_RANGO_INI NUMBER(8,2) NOT NULL,    -- Rango inicial para el valor que se establece
+	V_RANGO_FIN NUMBER(8,2) NOT NULL,    -- Rango inicial para el valor que se establece
+	K_TIPO_PARAMETRO NUMBER(8) NOT NULL,    -- Tipo de Par�metro seg�n la tabla Tipo_Parametro
+	V_TARIFA_PARAMETRO NUMBER(8,2) NOT NULL,    -- Tarifa Base establecida para el par�metro del tipo de tarifa indicado
+	F_VIGENCIA_INI DATE NULL,    -- Vigencia Inicial para la tarifa seg�n el par�metro establecido
+	F_VIGENCIA_FIN DATE NULL    -- Vigencia final para la tarifa seg�n el par�metro establecido
 )
 ;
 
-CREATE TABLE  "Paso"
+CREATE TABLE  Paso
 (
-	"K_PASO" NUMBER(4) NOT NULL,    -- Identificador del paso registrado
-	"K_PROG_DIARIA" NUMBER(8) NOT NULL,    -- Llave foranea que relaciona la reserva con el paso
-	"F_FECHA_PASO" DATE NOT NULL,    -- Fecha cuando el buque realiza el paso por el canal en tiempo real
-	"ID_TRIPULACION" NUMBER(3) NOT NULL,    -- Numero total de pasajeros del buque. Derivado
-	"Q_CARGA" NUMBER(8,2) NOT NULL    -- Valor de la carga total con la que el Busuqe realiza el paso en tiempo real
+	K_PASO NUMBER(4) NOT NULL,    -- Identificador del paso registrado
+	K_PROG_DIARIA NUMBER(8) NOT NULL,    -- Llave foranea que relaciona la reserva con el paso
+	F_FECHA_PASO DATE NOT NULL,    -- Fecha cuando el buque realiza el paso por el canal en tiempo real
+	ID_TRIPULACION NUMBER(3) NOT NULL,    -- Numero total de pasajeros del buque. Derivado
+	Q_CARGA NUMBER(8,2) NOT NULL    -- Valor de la carga total con la que el Busuqe realiza el paso en tiempo real
 )
 ;
 
-CREATE TABLE  "Periodo"
+CREATE TABLE  Periodo
 (
-	"K_ID_PERIODO" NUMBER(10) NOT NULL,    -- Identificador Primario del per�odo creado
-	"N_NOMBRE" VARCHAR2(50) NOT NULL,    -- Nombre que se asigna al per�odo
-	"V_DIAS_ANTES_MIN" NUMBER(5) NOT NULL,    -- Cantidad de d�as m�nimo
-	"V_DIAS_ANTES_MAX" NUMBER(5) NOT NULL,    -- Cantidad de d�as m�ximo
-	"N_DESCRIPCION" VARCHAR2(50) NULL    -- Descripcion opcional sobre la descripci�n
+	K_ID_PERIODO NUMBER(10) NOT NULL,    -- Identificador Primario del per�odo creado
+	N_NOMBRE VARCHAR2(50) NOT NULL,    -- Nombre que se asigna al per�odo
+	V_DIAS_ANTES_MIN NUMBER(5) NOT NULL,    -- Cantidad de d�as m�nimo
+	V_DIAS_ANTES_MAX NUMBER(5) NOT NULL,    -- Cantidad de d�as m�ximo
+	N_DESCRIPCION VARCHAR2(50) NULL    -- Descripcion opcional sobre la descripci�n
 )
 ;
 
-CREATE TABLE  "Persona"
+CREATE TABLE  Persona
 (
-	"K_ID_PERSONA" NUMBER(8) NOT NULL,    -- Identificacion de la persona
-	"N_NOMBRES" VARCHAR(30) NOT NULL,    -- Nombre de pila de la persona
-	"N_APELLIDOS" VARCHAR(25) NOT NULL,    -- Apellido de la persona
-	"F_NACIMIENTO" DATE NOT NULL,    -- Fecha de nacimiento de la persona
-	"K_TIPO_IDENTIFICACION" VARCHAR2(50) NOT NULL,
-	"K_NUM_IDENTIFICACION" VARCHAR2(50) NOT NULL,
-	"N_GENERO" VARCHAR2(1) NOT NULL
+	K_ID_PERSONA NUMBER(8) NOT NULL,    -- Identificacion de la persona
+	N_NOMBRES VARCHAR(30) NOT NULL,    -- Nombre de pila de la persona
+	N_APELLIDOS VARCHAR(25) NOT NULL,    -- Apellido de la persona
+	F_NACIMIENTO DATE NOT NULL,    -- Fecha de nacimiento de la persona
+	K_TIPO_IDENTIFICACION VARCHAR2(50) NOT NULL,
+	K_NUM_IDENTIFICACION VARCHAR2(50) NOT NULL,
+	N_GENERO VARCHAR2(1) NOT NULL
 )
 ;
 
-CREATE TABLE  "Pogramacion_Diaria"
+CREATE TABLE  Pogramacion_Diaria
 (
-	"K_PROG_DIARIA" NUMBER(10) NOT NULL,    -- Identificador Primario de la tabla
-	"F_DIA_PROG" DATE NOT NULL,    -- Fecha a la que corresponde la Programaci�n Diaria
-	"K_RESERVA" NUMBER(10) NOT NULL,    -- No. de la reserva con la que se organiza la programaci�n diaria
-	"K_PUERTO_LLEGADA" NUMBER(10) NULL,    -- Puerto de llegada del Buque
-	"K_PUERTO_SALIDA" NUMBER(10) NULL,    -- Puerto de salida del Buque
-	"F_HORA_LLEGADA" DATE NOT NULL,    -- Fecha y hora de llegada del buque
-	"F_HORA_SALIDA" DATE NOT NULL    -- Fech y hora de salida del buque
+	K_PROG_DIARIA NUMBER(10) NOT NULL,    -- Identificador Primario de la tabla
+	F_DIA_PROG DATE NOT NULL,    -- Fecha a la que corresponde la Programaci�n Diaria
+	K_RESERVA NUMBER(10) NOT NULL,    -- No. de la reserva con la que se organiza la programaci�n diaria
+	K_PUERTO_LLEGADA NUMBER(10) NULL,    -- Puerto de llegada del Buque
+	K_PUERTO_SALIDA NUMBER(10) NULL,    -- Puerto de salida del Buque
+	F_HORA_LLEGADA DATE NOT NULL,    -- Fecha y hora de llegada del buque
+	F_HORA_SALIDA DATE NOT NULL    -- Fech y hora de salida del buque
 )
 ;
 
-CREATE TABLE  "Puerto"
+CREATE TABLE  Puerto
 (
-	"K_PUERTO" NUMBER(10) NOT NULL,    -- Identificador del puerto
-	"N_NOMBRE_PUERTO" VARCHAR2(50) NOT NULL,    -- Nombre del puerto
-	"N_DESCRIPCION_PUERTO" VARCHAR2(300) NULL,    -- Descripci�n del puerto
-	"K_PROG_DIARIA" NUMBER(10) NULL
+	K_PUERTO NUMBER(10) NOT NULL,    -- Identificador del puerto
+	N_NOMBRE_PUERTO VARCHAR2(50) NOT NULL,    -- Nombre del puerto
+	N_DESCRIPCION_PUERTO VARCHAR2(300) NULL,    -- Descripci�n del puerto
+	K_PROG_DIARIA NUMBER(10) NULL
 )
 ;
 
-CREATE TABLE  "Reserva"
+CREATE TABLE  Reserva
 (
-	"K_RESERVA" NUMBER(8) NOT NULL,    -- Identificador de la reserva
-	"N_COD_CLIENTE" VARCHAR2(50) NOT NULL,    -- C�digo asignado a una compa�ia para controlar sus reservas y paso por en Canal
-	"K_ID_BUQUE" NUMBER(8) NOT NULL,    -- Llave foranea que relaciona la reserva para un buque
-	"F_ESTIMADA_ARRIVO" DATE NOT NULL,    -- Fecha prevista para que el buque llegue al puerto de salida
-	"K_CUPO" NUMBER(10) NULL,    -- Cupo con el cual se realiz� la reserva
-	"K_AGENTE" NUMBER(8) NOT NULL,    -- Llave foranea que representa el Agente encargado de un buque que ha realizado la reserva
-	"K_PERIODO" NUMBER(10) NULL,    -- pERIODO EN EL CUAL SE REALIZA LA RESERVA
-	"I_ESTADO" VARCHAR(3) NOT NULL,    -- Estado en el que se encuentra actualmente la reserva ('PENDIENTE', 'PAGADA', 'CANCELADA','FINALIZADA')
-	"N_PUERTO_SALIDA" VARCHAR(20) NOT NULL,    -- Nombre del puerto del que va a salir el buque
-	"N_PUERTO_LLEGADA" VARCHAR(20) NOT NULL,    -- Nombre del puerto al que va a llegar el buque
-	"F_SALIDA" DATE NOT NULL,    -- Dia para que el buque salga del puerto de salida
-	"F_LLEGADA" DATE NOT NULL    -- Dia para el cual el buque va a alcanzar al puerto de llegada
+	K_RESERVA NUMBER(8) NOT NULL,    -- Identificador de la reserva
+	N_COD_CLIENTE VARCHAR2(50) NOT NULL,    -- C�digo asignado a una compa�ia para controlar sus reservas y paso por en Canal
+	K_ID_BUQUE NUMBER(8) NOT NULL,    -- Llave foranea que relaciona la reserva para un buque
+	F_ESTIMADA_ARRIVO DATE NOT NULL,    -- Fecha prevista para que el buque llegue al puerto de salida
+	K_CUPO NUMBER(10) NULL,    -- Cupo con el cual se realiz� la reserva
+	K_AGENTE NUMBER(8) NOT NULL,    -- Llave foranea que representa el Agente encargado de un buque que ha realizado la reserva
+	K_PERIODO NUMBER(10) NULL,    -- pERIODO EN EL CUAL SE REALIZA LA RESERVA
+	I_ESTADO VARCHAR(3) NOT NULL,    -- Estado en el que se encuentra actualmente la reserva ('PENDIENTE', 'PAGADA', 'CANCELADA','FINALIZADA')
+	N_PUERTO_SALIDA VARCHAR(20) NOT NULL,    -- Nombre del puerto del que va a salir el buque
+	N_PUERTO_LLEGADA VARCHAR(20) NOT NULL,    -- Nombre del puerto al que va a llegar el buque
+	F_SALIDA DATE NOT NULL,    -- Dia para que el buque salga del puerto de salida
+	F_LLEGADA DATE NOT NULL    -- Dia para el cual el buque va a alcanzar al puerto de llegada
 )
 ;
 
-CREATE TABLE  "Subasta"
+CREATE TABLE  Subasta
 (
-	"K_SUBASTA" VARCHAR(6) NOT NULL,    -- Identificador de la subasta
-	"K_CUPO" NUMBER(10) NOT NULL,    -- id del Cupo por el cual se crea la subasta
-	"V_TOPE_MINIMO" NUMBER(8,2) NOT NULL,    -- Valor minimo para empezar la subasta
-	"F_APERTURA" DATE NOT NULL,    -- Fecha en que se abre la subasta
-	"F_CIERRE" DATE NULL,    -- Fecha en la que se cierra la subasta
-	"N_ESTADO_SUBASTA" VARCHAR2(50) NOT NULL    -- Estado de la Subasta ('ABIERTA','FINALIZADA')
+	K_SUBASTA VARCHAR(6) NOT NULL,    -- Identificador de la subasta
+	K_CUPO NUMBER(10) NOT NULL,    -- id del Cupo por el cual se crea la subasta
+	V_TOPE_MINIMO NUMBER(8,2) NOT NULL,    -- Valor minimo para empezar la subasta
+	F_APERTURA DATE NOT NULL,    -- Fecha en que se abre la subasta
+	F_CIERRE DATE NULL,    -- Fecha en la que se cierra la subasta
+	N_ESTADO_SUBASTA VARCHAR2(50) NOT NULL    -- Estado de la Subasta ('ABIERTA','FINALIZADA')
 )
 ;
 
-CREATE TABLE  "Tarifa"
+CREATE TABLE  Tarifa
 (
-	"K_TARIFA" NUMBER(10) NOT NULL,
-	"V_VALOR_TARIFA" NUMBER(8,2) NULL,
-	"F_CALCULO" DATE NULL,
-	"ID_RESERVA" NUMBER(10) NULL,    -- Identificador de reserva en caso de que la tarifa generada sea para una reserva
-	"ID_CANCELACION_RESERVA" NUMBER(10) NULL,    -- Identificador de Cancelacion de reserva en caso de que la tarifa generada sea para una cancelacion reserva
-	"ID_PASO" NUMBER(10) NULL    -- Identificador de paso en caso de que la tarifa generada sea para un paso
+	K_TARIFA NUMBER(10) NOT NULL,
+	V_VALOR_TARIFA NUMBER(8,2) NULL,
+	F_CALCULO DATE NULL,
+	ID_RESERVA NUMBER(10) NULL,    -- Identificador de reserva en caso de que la tarifa generada sea para una reserva
+	ID_CANCELACION_RESERVA NUMBER(10) NULL,    -- Identificador de Cancelacion de reserva en caso de que la tarifa generada sea para una cancelacion reserva
+	ID_PASO NUMBER(10) NULL    -- Identificador de paso en caso de que la tarifa generada sea para un paso
 )
 ;
 
-CREATE TABLE  "Tipo_Parametro"
+CREATE TABLE  Tipo_Parametro
 (
-	"K_TIPO_PARAMETRO" NUMBER(10) NOT NULL,    -- Identificador del tipo de tama�o
-	"N_NOMBRE" VARCHAR2(70) NOT NULL,    -- Nombre del tipo de par�metro
-	"N_DESCRIPCION" VARCHAR2(50) NULL,    -- Descripci�n
-	"N_SIGLA" VARCHAR2(10) NULL
+	K_TIPO_PARAMETRO NUMBER(10) NOT NULL,    -- Identificador del tipo de tama�o
+	N_NOMBRE VARCHAR2(70) NOT NULL,    -- Nombre del tipo de par�metro
+	N_DESCRIPCION VARCHAR2(50) NULL,    -- Descripci�n
+	N_SIGLA VARCHAR2(10) NULL
 )
 ;
 
-CREATE TABLE  "TipoBuque"
+CREATE TABLE  TipoBuque
 (
-	"k_id" NUMBER(4) NOT NULL,    -- Identificador para un tipo de buque
-	"n_tipo" VARCHAR(10) NOT NULL,    -- Describe el nombre del tipo de puede tener un buque
-	"V_BEAN_MIN" NUMBER(8,2) NOT NULL,
-	"V_BEAN_MAX" NUMBER(8,2) NOT NULL,
-	"V_LENGTH_MIN" NUMBER(8,2) NULL,
-	"V_LENGTH_MAX" NUMBER(8,2) NULL
+	k_id NUMBER(4) NOT NULL,    -- Identificador para un tipo de buque
+	n_tipo VARCHAR(10) NOT NULL,    -- Describe el nombre del tipo de puede tener un buque
+	V_BEAN_MIN NUMBER(8,2) NOT NULL,
+	V_BEAN_MAX NUMBER(8,2) NOT NULL,
+	V_LENGTH_MIN NUMBER(8,2) NULL,
+	V_LENGTH_MAX NUMBER(8,2) NULL
 )
 ;
 
-CREATE TABLE  "TipoCarga"
+CREATE TABLE  TipoCarga
 (
-	"K_TIPO_CARGA" NUMBER(4) NOT NULL,    -- Numero que identifica el tipo de carga
-	"N_NOMBRE" VARCHAR(20) NOT NULL,    -- Nombre del tipo de carga que puede transportar un buque
-	"N_DESCRIPCION" VARCHAR2(50) NULL    -- Descripci�n del tipo de carga que puede tranportar un Buque
+	K_TIPO_CARGA NUMBER(4) NOT NULL,    -- Numero que identifica el tipo de carga
+	N_NOMBRE VARCHAR(20) NOT NULL,    -- Nombre del tipo de carga que puede transportar un buque
+	N_DESCRIPCION VARCHAR2(50) NULL    -- Descripci�n del tipo de carga que puede tranportar un Buque
 )
 ;
 
-CREATE TABLE  "Tripulacion"
+CREATE TABLE  Tripulacion
 (
-	"K_ID_TRIPULACION" VARCHAR2(50) NOT NULL,
-	"K_ID_PASO" NUMBER(4) NOT NULL,    -- Llave foranea que relaciona el paso con la tripulacion
-	"K_ID_TRIPULANTE" NUMBER(5) NOT NULL,    -- Llave foranea que relaciona el tripulante con la tripulacion que va a viajar
-	"K_ID_BUQUE" VARCHAR2(50) NOT NULL,    -- Buque al que pertenece la tripulaci�n
-	"F_REGISTRO" DATE NOT NULL    -- Fecha en la que se registra la tripulaci�n
+	K_ID_TRIPULACION VARCHAR2(50) NOT NULL,
+	K_ID_PASO NUMBER(4) NOT NULL,    -- Llave foranea que relaciona el paso con la tripulacion
+	K_ID_TRIPULANTE NUMBER(5) NOT NULL,    -- Llave foranea que relaciona el tripulante con la tripulacion que va a viajar
+	K_ID_BUQUE VARCHAR2(50) NOT NULL,    -- Buque al que pertenece la tripulaci�n
+	F_REGISTRO DATE NOT NULL    -- Fecha en la que se registra la tripulaci�n
 )
 ;
 
-CREATE TABLE  "Tripulante"
+CREATE TABLE  Tripulante
 (
-	"K_ID_TRIPULANTE" NUMBER(5) NOT NULL,    -- Identificador del tripulante del buque
-	"K_ID_PERSONA" NUMBER(8) NOT NULL,    -- Llave foranea que relaciona al tripulante con su informaci�n personal, los datos de Persona
-	"N_CARGO" VARCHAR(50) NOT NULL    -- Cargo que desempe�a el tripulante en el buque
+	K_ID_TRIPULANTE NUMBER(5) NOT NULL,    -- Identificador del tripulante del buque
+	K_ID_PERSONA NUMBER(8) NOT NULL,    -- Llave foranea que relaciona al tripulante con su informaci�n personal, los datos de Persona
+	N_CARGO VARCHAR(50) NOT NULL    -- Cargo que desempe�a el tripulante en el buque
 )
 ;
 
 /* Create Comments, Sequences and Triggers for Autonumber Columns */
 
-COMMENT ON TABLE  "Agente" IS 'Contiene a todos los agentes encargados de un buque que pueden realizar reservas'
+COMMENT ON TABLE  Agente IS 'Contiene a todos los agentes encargados de un buque que pueden realizar reservas'
 ;
 
-COMMENT ON COLUMN  "Agente"."K_ID_AGENTE" IS 'PK: Identificador del agente, codigo que ofrece el canal de panama a los encargados de los buques'
+COMMENT ON COLUMN  Agente.K_ID_AGENTE IS 'PK: Identificador del agente, codigo que ofrece el canal de panama a los encargados de los buques'
 ;
 
-COMMENT ON COLUMN  "Agente"."K_ID_COMPANIA" IS 'FK: Llave foranea de la compania a la que pertenece el agente'
+COMMENT ON COLUMN  Agente.K_ID_COMPANIA IS 'FK: Llave foranea de la compania a la que pertenece el agente'
 ;
 
-COMMENT ON COLUMN  "Agente"."K_ID_PERSONA" IS 'FK: Llave foranea que relaciona los datos de la persona para el agente'
+COMMENT ON COLUMN  Agente.K_ID_PERSONA IS 'FK: Llave foranea que relaciona los datos de la persona para el agente'
 ;
 
-COMMENT ON TABLE  "Buque" IS 'Contiene la informaci�n de los buques que van a realizar el paso por el canal de Panam�'
+COMMENT ON TABLE  Buque IS 'Contiene la informaci�n de los buques que van a realizar el paso por el canal de Panam�'
 ;
 
-COMMENT ON COLUMN  "Buque"."K_NUM_SERIE" IS 'Es el identificador del barco, numero unico que se asigna a cada uno.'
+COMMENT ON COLUMN  Buque.K_NUM_SERIE IS 'Es el identificador del barco, numero unico que se asigna a cada uno.'
 ;
 
-COMMENT ON COLUMN  "Buque"."K_TIPO_CARGA" IS 'Llave foranea que representa el tipo de carga que transporta el buque'
+COMMENT ON COLUMN  Buque.K_TIPO_CARGA IS 'Llave foranea que representa el tipo de carga que transporta el buque'
 ;
 
-COMMENT ON COLUMN  "Buque"."K_TIPO_BUQUE" IS 'Llave foranea que muestra  el tipo de buque para un buque'
+COMMENT ON COLUMN  Buque.K_TIPO_BUQUE IS 'Llave foranea que muestra  el tipo de buque para un buque'
 ;
 
-COMMENT ON COLUMN  "Buque"."V_BEAM" IS 'Medida de ancho del buque en metros'
+COMMENT ON COLUMN  Buque.V_BEAM IS 'Medida de ancho del buque en metros'
 ;
 
-COMMENT ON COLUMN  "Buque"."V_LOA" IS 'Mide la longitud total del buque en metros'
+COMMENT ON COLUMN  Buque.V_LOA IS 'Mide la longitud total del buque en metros'
 ;
 
-COMMENT ON COLUMN  "Buque"."V_CARGA_MAX" IS 'Peso de la carga maxima que puede transportar el buque'
+COMMENT ON COLUMN  Buque.V_CARGA_MAX IS 'Peso de la carga maxima que puede transportar el buque'
 ;
 
-COMMENT ON TABLE  "Cancelacion_Reserva" IS 'Tabla que guarda la informaci�n obtenida al momento de la cancelaci�n de una reserva'
+COMMENT ON TABLE  Cancelacion_Reserva IS 'Tabla que guarda la informaci�n obtenida al momento de la cancelaci�n de una reserva'
 ;
 
-COMMENT ON COLUMN  "Cancelacion_Reserva"."K_CANCELACION" IS 'Identificador Primario de la Tabla CANCELACI�N'
+COMMENT ON COLUMN  Cancelacion_Reserva.K_CANCELACION IS 'Identificador Primario de la Tabla CANCELACI�N'
 ;
 
-COMMENT ON COLUMN  "Cancelacion_Reserva"."F_CANCELACION" IS 'Fecha de la cancelaci�n de la Reserva'
+COMMENT ON COLUMN  Cancelacion_Reserva.F_CANCELACION IS 'Fecha de la cancelaci�n de la Reserva'
 ;
 
-COMMENT ON COLUMN  "Cancelacion_Reserva"."V_DIAS_ANTELACION" IS 'Registro derivado del n�mero de d�as de antelaci�n a la fecha de arrivo de la reserva, en el que se cancel� la llamada'
+COMMENT ON COLUMN  Cancelacion_Reserva.V_DIAS_ANTELACION IS 'Registro derivado del n�mero de d�as de antelaci�n a la fecha de arrivo de la reserva, en el que se cancel� la llamada'
 ;
 
-COMMENT ON COLUMN  "Cancelacion_Reserva"."ID_AGENTE" IS 'ID del agente que cancela la reserva'
+COMMENT ON COLUMN  Cancelacion_Reserva.ID_AGENTE IS 'ID del agente que cancela la reserva'
 ;
 
-COMMENT ON COLUMN  "Cancelacion_Reserva"."K_RESERVA" IS 'IDENTIFICADOR DE LA RESERVA QUE FUE CANCELADA'
+COMMENT ON COLUMN  Cancelacion_Reserva.K_RESERVA IS 'IDENTIFICADOR DE LA RESERVA QUE FUE CANCELADA'
 ;
 
-COMMENT ON TABLE  "Compania" IS 'Contiene a las diferentes companias que manejan agentes para los buques de paso por el canal de Panama'
+COMMENT ON TABLE  Compania IS 'Contiene a las diferentes companias que manejan agentes para los buques de paso por el canal de Panama'
 ;
 
-COMMENT ON COLUMN  "Compania"."K_ID_CLIENTE" IS 'Identificador que representa a la compania otorgado por el canal de panama'
+COMMENT ON COLUMN  Compania.K_ID_CLIENTE IS 'Identificador que representa a la compania otorgado por el canal de panama'
 ;
 
-COMMENT ON COLUMN  "Compania"."N_COD_CLIENTE" IS 'C�digo asignado al cliente por el sistema para controlar el ranking del mismo'
+COMMENT ON COLUMN  Compania.N_COD_CLIENTE IS 'C�digo asignado al cliente por el sistema para controlar el ranking del mismo'
 ;
 
-COMMENT ON COLUMN  "Compania"."N_NOMBRE" IS 'Nombre de la compania que realizar� el paso por en Canal'
+COMMENT ON COLUMN  Compania.N_NOMBRE IS 'Nombre de la compania que realizar� el paso por en Canal'
 ;
 
-COMMENT ON COLUMN  "Compania"."Q_TELEFONO" IS 'Tel�fono de contacto de la Compa��a'
+COMMENT ON COLUMN  Compania.Q_TELEFONO IS 'Tel�fono de contacto de la Compa��a'
 ;
 
-COMMENT ON COLUMN  "Compania"."N_DIRECCION" IS 'Direcci�n de Ubicaci�n Principal de la Compa��a'
+COMMENT ON COLUMN  Compania.N_DIRECCION IS 'Direcci�n de Ubicaci�n Principal de la Compa��a'
 ;
 
-COMMENT ON COLUMN  "Compania"."N_PAIS" IS 'Pa�s de Or�gen de la Compa��a'
+COMMENT ON COLUMN  Compania.N_PAIS IS 'Pa�s de Or�gen de la Compa��a'
 ;
 
-COMMENT ON COLUMN  "Cupo"."K_CUPO" IS 'Identificador Primario del cupo'
+COMMENT ON COLUMN  Cupo.K_CUPO IS 'Identificador Primario del cupo'
 ;
 
-COMMENT ON COLUMN  "Cupo"."N_TIPO_ESCLUSA" IS 'Tipo de escusa que usar� el cupo abierto (''NEOPANAMAX'',''SUPER'',''REGULAR'')'
+COMMENT ON COLUMN  Cupo.N_TIPO_ESCLUSA IS 'Tipo de escusa que usar� el cupo abierto (''NEOPANAMAX'',''SUPER'',''REGULAR'')'
 ;
 
-COMMENT ON COLUMN  "Cupo"."N_SENTIDO" IS 'Sentido o direcci�n para el paso del buque (''NORTE'',''SUR'')'
+COMMENT ON COLUMN  Cupo.N_SENTIDO IS 'Sentido o direcci�n para el paso del buque (''NORTE'',''SUR'')'
 ;
 
-COMMENT ON COLUMN  "Cupo"."F_CUPO" IS 'Fecha para la cu�l se creo el cupo, es la fecha en la que pasar� el buque'
+COMMENT ON COLUMN  Cupo.F_CUPO IS 'Fecha para la cu�l se creo el cupo, es la fecha en la que pasar� el buque'
 ;
 
-COMMENT ON TABLE  "Detalle_Tarifa" IS 'La tabla guarda la tarifa de cada detalle individual seg�n los par�metros establecidos. (Tarifa por carga m�xima, tarifa reserva, tarifa cancelaci�n)'
+COMMENT ON COLUMN  Cupo.N_TIPO_CUPO IS 'Tipo de cupo que puede ser NORMAL o SUBASTADO'
 ;
 
-COMMENT ON COLUMN  "Detalle_Tarifa"."K_DETALLE_TARIFA" IS 'Identificador Principal'
+COMMENT ON TABLE  Detalle_Tarifa IS 'La tabla guarda la tarifa de cada detalle individual seg�n los par�metros establecidos. (Tarifa por carga m�xima, tarifa reserva, tarifa cancelaci�n)'
 ;
 
-COMMENT ON COLUMN  "Detalle_Tarifa"."K_TARIFA" IS 'Llave for�nea de Tarifa'
+COMMENT ON COLUMN  Detalle_Tarifa.K_DETALLE_TARIFA IS 'Identificador Principal'
 ;
 
-COMMENT ON COLUMN  "Detalle_Tarifa"."K_PARAMETRO" IS 'Llave Primaria del tipo par�metro'
+COMMENT ON COLUMN  Detalle_Tarifa.K_TARIFA IS 'Llave for�nea de Tarifa'
 ;
 
-COMMENT ON TABLE  "Medio_Pago" IS 'Contiene los medio de pagos disponibles'
+COMMENT ON COLUMN  Detalle_Tarifa.K_PARAMETRO IS 'Llave Primaria del tipo par�metro'
 ;
 
-COMMENT ON COLUMN  "Medio_Pago"."K_MEDIO_PAGO" IS 'Identificador del tipo de pago'
+COMMENT ON TABLE  Medio_Pago IS 'Contiene los medio de pagos disponibles'
 ;
 
-COMMENT ON COLUMN  "Medio_Pago"."N_NOMBRE" IS 'Nombre del medio de pago'
+COMMENT ON COLUMN  Medio_Pago.K_MEDIO_PAGO IS 'Identificador del tipo de pago'
 ;
 
-COMMENT ON COLUMN  "Medio_Pago"."N_DESCRIPCION" IS 'Describe el medio de pago en especifico del pago'
+COMMENT ON COLUMN  Medio_Pago.N_NOMBRE IS 'Nombre del medio de pago'
 ;
 
-COMMENT ON TABLE  "Oferta" IS 'Registros de la ofertas que se realizan sobre una subasta'
+COMMENT ON COLUMN  Medio_Pago.N_DESCRIPCION IS 'Describe el medio de pago en especifico del pago'
 ;
 
-COMMENT ON COLUMN  "Oferta"."K_OFERTA" IS 'Identificador de la oferta'
+COMMENT ON TABLE  Oferta IS 'Registros de la ofertas que se realizan sobre una subasta'
 ;
 
-COMMENT ON COLUMN  "Oferta"."K_SUBASTA" IS 'Llave foranea que relaciona la oferta para la subasta de un cupo'
+COMMENT ON COLUMN  Oferta.K_OFERTA IS 'Identificador de la oferta'
 ;
 
-COMMENT ON COLUMN  "Oferta"."V_OFERTA" IS 'Valor de la oferta que va a realizar el agente para un cupo'
+COMMENT ON COLUMN  Oferta.K_SUBASTA IS 'Llave foranea que relaciona la oferta para la subasta de un cupo'
 ;
 
-COMMENT ON COLUMN  "Oferta"."F_OFERTA" IS 'Fecha en la cual el agente hace la oferta para el cupo subastado'
+COMMENT ON COLUMN  Oferta.V_OFERTA IS 'Valor de la oferta que va a realizar el agente para un cupo'
 ;
 
-COMMENT ON COLUMN  "Oferta"."K_IDAGENTE" IS 'Llave foranea que relaciona la oferta con el respectivo agente que la realizo '
+COMMENT ON COLUMN  Oferta.F_OFERTA IS 'Fecha en la cual el agente hace la oferta para el cupo subastado'
 ;
 
-COMMENT ON TABLE  "Pago" IS 'Contiene los diferentes pagos para las tarifas de una reserva'
+COMMENT ON COLUMN  Oferta.K_IDAGENTE IS 'Llave foranea que relaciona la oferta con el respectivo agente que la realizo '
 ;
 
-COMMENT ON COLUMN  "Pago"."K_ID_PAGO" IS 'Identificador del numero de pago para una tarifa'
+COMMENT ON TABLE  Pago IS 'Contiene los diferentes pagos para las tarifas de una reserva'
 ;
 
-COMMENT ON COLUMN  "Pago"."F_FECHA_PAGO" IS 'Fecha de cuando se realizo el pago'
+COMMENT ON COLUMN  Pago.K_ID_PAGO IS 'Identificador del numero de pago para una tarifa'
 ;
 
-COMMENT ON COLUMN  "Pago"."K_MEDIO_PAGO" IS 'Llave foranea que relaciona el tipo de pago con el pago'
+COMMENT ON COLUMN  Pago.F_FECHA_PAGO IS 'Fecha de cuando se realizo el pago'
 ;
 
-COMMENT ON COLUMN  "Pago"."K_TARIFA" IS 'Llave for�nea de la tarifa que va a ser pagada'
+COMMENT ON COLUMN  Pago.K_MEDIO_PAGO IS 'Llave foranea que relaciona el tipo de pago con el pago'
 ;
 
-COMMENT ON TABLE  "Parametro" IS 'La tabla almacena los datos de par�metro de las tarifas que se van a cobrar, con un rango y una fecha de vigencia en la que aplicar� la tarifa.  El rango establece un m�nimo y m�ximo en el cual aplicar� una tarifa, puede ser un m�nimo y m�ximo para carga, un m�nimo y m�ximo para d�as de antelaci�n en el caso de que el tipo de par�metro sea cancelaci�n, etc.'
+COMMENT ON COLUMN  Pago.K_TARIFA IS 'Llave for�nea de la tarifa que va a ser pagada'
 ;
 
-COMMENT ON COLUMN  "Parametro"."K_PARAMETRO" IS 'Identificador del par�metro'
+COMMENT ON TABLE  Parametro IS 'La tabla almacena los datos de par�metro de las tarifas que se van a cobrar, con un rango y una fecha de vigencia en la que aplicar� la tarifa.  El rango establece un m�nimo y m�ximo en el cual aplicar� una tarifa, puede ser un m�nimo y m�ximo para carga, un m�nimo y m�ximo para d�as de antelaci�n en el caso de que el tipo de par�metro sea cancelaci�n, etc.'
 ;
 
-COMMENT ON COLUMN  "Parametro"."N_NOMBRE" IS 'Nombre que se le asigna al par�metro'
+COMMENT ON COLUMN  Parametro.K_PARAMETRO IS 'Identificador del par�metro'
 ;
 
-COMMENT ON COLUMN  "Parametro"."V_RANGO_INI" IS 'Rango inicial para el valor que se establece'
+COMMENT ON COLUMN  Parametro.N_NOMBRE IS 'Nombre que se le asigna al par�metro'
 ;
 
-COMMENT ON COLUMN  "Parametro"."V_RANGO_FIN" IS 'Rango inicial para el valor que se establece'
+COMMENT ON COLUMN  Parametro.V_RANGO_INI IS 'Rango inicial para el valor que se establece'
 ;
 
-COMMENT ON COLUMN  "Parametro"."K_TIPO_PARAMETRO" IS 'Tipo de Par�metro seg�n la tabla Tipo_Parametro'
+COMMENT ON COLUMN  Parametro.V_RANGO_FIN IS 'Rango inicial para el valor que se establece'
 ;
 
-COMMENT ON COLUMN  "Parametro"."V_TARIFA_PARAMETRO" IS 'Tarifa Base establecida para el par�metro del tipo de tarifa indicado'
+COMMENT ON COLUMN  Parametro.K_TIPO_PARAMETRO IS 'Tipo de Par�metro seg�n la tabla Tipo_Parametro'
 ;
 
-COMMENT ON COLUMN  "Parametro"."F_VIGENCIA_INI" IS 'Vigencia Inicial para la tarifa seg�n el par�metro establecido'
+COMMENT ON COLUMN  Parametro.V_TARIFA_PARAMETRO IS 'Tarifa Base establecida para el par�metro del tipo de tarifa indicado'
 ;
 
-COMMENT ON COLUMN  "Parametro"."F_VIGENCIA_FIN" IS 'Vigencia final para la tarifa seg�n el par�metro establecido'
+COMMENT ON COLUMN  Parametro.F_VIGENCIA_INI IS 'Vigencia Inicial para la tarifa seg�n el par�metro establecido'
 ;
 
-COMMENT ON TABLE  "Paso" IS 'Contiene los datos del paso correspondiente a un paso en tiempo real que se presente'
+COMMENT ON COLUMN  Parametro.F_VIGENCIA_FIN IS 'Vigencia final para la tarifa seg�n el par�metro establecido'
 ;
 
-COMMENT ON COLUMN  "Paso"."K_PASO" IS 'Identificador del paso registrado'
+COMMENT ON TABLE  Paso IS 'Contiene los datos del paso correspondiente a un paso en tiempo real que se presente'
 ;
 
-COMMENT ON COLUMN  "Paso"."K_PROG_DIARIA" IS 'Llave foranea que relaciona la reserva con el paso'
+COMMENT ON COLUMN  Paso.K_PASO IS 'Identificador del paso registrado'
 ;
 
-COMMENT ON COLUMN  "Paso"."F_FECHA_PASO" IS 'Fecha cuando el buque realiza el paso por el canal en tiempo real'
+COMMENT ON COLUMN  Paso.K_PROG_DIARIA IS 'Llave foranea que relaciona la reserva con el paso'
 ;
 
-COMMENT ON COLUMN  "Paso"."ID_TRIPULACION" IS 'Numero total de pasajeros del buque. Derivado'
+COMMENT ON COLUMN  Paso.F_FECHA_PASO IS 'Fecha cuando el buque realiza el paso por el canal en tiempo real'
 ;
 
-COMMENT ON COLUMN  "Paso"."Q_CARGA" IS 'Valor de la carga total con la que el Busuqe realiza el paso en tiempo real'
+COMMENT ON COLUMN  Paso.ID_TRIPULACION IS 'Numero total de pasajeros del buque. Derivado'
 ;
 
-COMMENT ON TABLE  "Periodo" IS 'Tabla que almacena los valores que indican los l�mites en d�as para los per�odos en que se realice una reserva'
+COMMENT ON COLUMN  Paso.Q_CARGA IS 'Valor de la carga total con la que el Busuqe realiza el paso en tiempo real'
 ;
 
-COMMENT ON COLUMN  "Periodo"."K_ID_PERIODO" IS 'Identificador Primario del per�odo creado'
+COMMENT ON TABLE  Periodo IS 'Tabla que almacena los valores que indican los l�mites en d�as para los per�odos en que se realice una reserva'
 ;
 
-COMMENT ON COLUMN  "Periodo"."N_NOMBRE" IS 'Nombre que se asigna al per�odo'
+COMMENT ON COLUMN  Periodo.K_ID_PERIODO IS 'Identificador Primario del per�odo creado'
 ;
 
-COMMENT ON COLUMN  "Periodo"."V_DIAS_ANTES_MIN" IS 'Cantidad de d�as m�nimo'
+COMMENT ON COLUMN  Periodo.N_NOMBRE IS 'Nombre que se asigna al per�odo'
 ;
 
-COMMENT ON COLUMN  "Periodo"."V_DIAS_ANTES_MAX" IS 'Cantidad de d�as m�ximo'
+COMMENT ON COLUMN  Periodo.V_DIAS_ANTES_MIN IS 'Cantidad de d�as m�nimo'
 ;
 
-COMMENT ON COLUMN  "Periodo"."N_DESCRIPCION" IS 'Descripcion opcional sobre la descripci�n'
+COMMENT ON COLUMN  Periodo.V_DIAS_ANTES_MAX IS 'Cantidad de d�as m�ximo'
 ;
 
-COMMENT ON TABLE  "Persona" IS 'Contiene los diferentes datos de una persona que va a transportarse en un buque'
+COMMENT ON COLUMN  Periodo.N_DESCRIPCION IS 'Descripcion opcional sobre la descripci�n'
 ;
 
-COMMENT ON COLUMN  "Persona"."K_ID_PERSONA" IS 'Identificacion de la persona'
+COMMENT ON TABLE  Persona IS 'Contiene los diferentes datos de una persona que va a transportarse en un buque'
 ;
 
-COMMENT ON COLUMN  "Persona"."N_NOMBRES" IS 'Nombre de pila de la persona'
+COMMENT ON COLUMN  Persona.K_ID_PERSONA IS 'Identificacion de la persona'
 ;
 
-COMMENT ON COLUMN  "Persona"."N_APELLIDOS" IS 'Apellido de la persona'
+COMMENT ON COLUMN  Persona.N_NOMBRES IS 'Nombre de pila de la persona'
 ;
 
-COMMENT ON COLUMN  "Persona"."F_NACIMIENTO" IS 'Fecha de nacimiento de la persona'
+COMMENT ON COLUMN  Persona.N_APELLIDOS IS 'Apellido de la persona'
 ;
 
-COMMENT ON COLUMN  "Pogramacion_Diaria"."K_PROG_DIARIA" IS 'Identificador Primario de la tabla'
+COMMENT ON COLUMN  Persona.F_NACIMIENTO IS 'Fecha de nacimiento de la persona'
 ;
 
-COMMENT ON COLUMN  "Pogramacion_Diaria"."F_DIA_PROG" IS 'Fecha a la que corresponde la Programaci�n Diaria'
+COMMENT ON COLUMN  Pogramacion_Diaria.K_PROG_DIARIA IS 'Identificador Primario de la tabla'
 ;
 
-COMMENT ON COLUMN  "Pogramacion_Diaria"."K_RESERVA" IS 'No. de la reserva con la que se organiza la programaci�n diaria'
+COMMENT ON COLUMN  Pogramacion_Diaria.F_DIA_PROG IS 'Fecha a la que corresponde la Programaci�n Diaria'
 ;
 
-COMMENT ON COLUMN  "Pogramacion_Diaria"."K_PUERTO_LLEGADA" IS 'Puerto de llegada del Buque'
+COMMENT ON COLUMN  Pogramacion_Diaria.K_RESERVA IS 'No. de la reserva con la que se organiza la programaci�n diaria'
 ;
 
-COMMENT ON COLUMN  "Pogramacion_Diaria"."K_PUERTO_SALIDA" IS 'Puerto de salida del Buque'
+COMMENT ON COLUMN  Pogramacion_Diaria.K_PUERTO_LLEGADA IS 'Puerto de llegada del Buque'
 ;
 
-COMMENT ON COLUMN  "Pogramacion_Diaria"."F_HORA_LLEGADA" IS 'Fecha y hora de llegada del buque'
+COMMENT ON COLUMN  Pogramacion_Diaria.K_PUERTO_SALIDA IS 'Puerto de salida del Buque'
 ;
 
-COMMENT ON COLUMN  "Pogramacion_Diaria"."F_HORA_SALIDA" IS 'Fech y hora de salida del buque'
+COMMENT ON COLUMN  Pogramacion_Diaria.F_HORA_LLEGADA IS 'Fecha y hora de llegada del buque'
 ;
 
-COMMENT ON TABLE  "Puerto" IS 'Tabla que registra los puerto existentes en el Canal de Panam�'
+COMMENT ON COLUMN  Pogramacion_Diaria.F_HORA_SALIDA IS 'Fech y hora de salida del buque'
 ;
 
-COMMENT ON COLUMN  "Puerto"."K_PUERTO" IS 'Identificador del puerto'
+COMMENT ON TABLE  Puerto IS 'Tabla que registra los puerto existentes en el Canal de Panam�'
 ;
 
-COMMENT ON COLUMN  "Puerto"."N_NOMBRE_PUERTO" IS 'Nombre del puerto'
+COMMENT ON COLUMN  Puerto.K_PUERTO IS 'Identificador del puerto'
 ;
 
-COMMENT ON COLUMN  "Puerto"."N_DESCRIPCION_PUERTO" IS 'Descripci�n del puerto'
+COMMENT ON COLUMN  Puerto.N_NOMBRE_PUERTO IS 'Nombre del puerto'
 ;
 
-COMMENT ON TABLE  "Reserva" IS 'Contiene las reservas realizadas por los agentes con sus respectivos buques'
+COMMENT ON COLUMN  Puerto.N_DESCRIPCION_PUERTO IS 'Descripci�n del puerto'
 ;
 
-COMMENT ON COLUMN  "Reserva"."K_RESERVA" IS 'Identificador de la reserva'
+COMMENT ON TABLE  Reserva IS 'Contiene las reservas realizadas por los agentes con sus respectivos buques'
 ;
 
-COMMENT ON COLUMN  "Reserva"."N_COD_CLIENTE" IS 'C�digo asignado a una compa�ia para controlar sus reservas y paso por en Canal'
+COMMENT ON COLUMN  Reserva.K_RESERVA IS 'Identificador de la reserva'
 ;
 
-COMMENT ON COLUMN  "Reserva"."K_ID_BUQUE" IS 'Llave foranea que relaciona la reserva para un buque'
+COMMENT ON COLUMN  Reserva.N_COD_CLIENTE IS 'C�digo asignado a una compa�ia para controlar sus reservas y paso por en Canal'
 ;
 
-COMMENT ON COLUMN  "Reserva"."F_ESTIMADA_ARRIVO" IS 'Fecha prevista para que el buque llegue al puerto de salida'
+COMMENT ON COLUMN  Reserva.K_ID_BUQUE IS 'Llave foranea que relaciona la reserva para un buque'
 ;
 
-COMMENT ON COLUMN  "Reserva"."K_CUPO" IS 'Cupo con el cual se realiz� la reserva'
+COMMENT ON COLUMN  Reserva.F_ESTIMADA_ARRIVO IS 'Fecha prevista para que el buque llegue al puerto de salida'
 ;
 
-COMMENT ON COLUMN  "Reserva"."K_AGENTE" IS 'Llave foranea que representa el Agente encargado de un buque que ha realizado la reserva'
+COMMENT ON COLUMN  Reserva.K_CUPO IS 'Cupo con el cual se realiz� la reserva'
 ;
 
-COMMENT ON COLUMN  "Reserva"."K_PERIODO" IS 'pERIODO EN EL CUAL SE REALIZA LA RESERVA'
+COMMENT ON COLUMN  Reserva.K_AGENTE IS 'Llave foranea que representa el Agente encargado de un buque que ha realizado la reserva'
 ;
 
-COMMENT ON COLUMN  "Reserva"."I_ESTADO" IS 'Estado en el que se encuentra actualmente la reserva (''PENDIENTE'', ''PAGADA'', ''CANCELADA'',''FINALIZADA'')'
+COMMENT ON COLUMN  Reserva.K_PERIODO IS 'pERIODO EN EL CUAL SE REALIZA LA RESERVA'
 ;
 
-COMMENT ON COLUMN  "Reserva"."N_PUERTO_SALIDA" IS 'Nombre del puerto del que va a salir el buque'
+COMMENT ON COLUMN  Reserva.I_ESTADO IS 'Estado en el que se encuentra actualmente la reserva (''PENDIENTE'', ''PAGADA'', ''CANCELADA'',''FINALIZADA'')'
 ;
 
-COMMENT ON COLUMN  "Reserva"."N_PUERTO_LLEGADA" IS 'Nombre del puerto al que va a llegar el buque'
+COMMENT ON COLUMN  Reserva.N_PUERTO_SALIDA IS 'Nombre del puerto del que va a salir el buque'
 ;
 
-COMMENT ON COLUMN  "Reserva"."F_SALIDA" IS 'Dia para que el buque salga del puerto de salida'
+COMMENT ON COLUMN  Reserva.N_PUERTO_LLEGADA IS 'Nombre del puerto al que va a llegar el buque'
 ;
 
-COMMENT ON COLUMN  "Reserva"."F_LLEGADA" IS 'Dia para el cual el buque va a alcanzar al puerto de llegada'
+COMMENT ON COLUMN  Reserva.F_SALIDA IS 'Dia para que el buque salga del puerto de salida'
 ;
 
-COMMENT ON TABLE  "Subasta" IS 'Contiene las diferentes subastas realizadas para un cupo'
+COMMENT ON COLUMN  Reserva.F_LLEGADA IS 'Dia para el cual el buque va a alcanzar al puerto de llegada'
 ;
 
-COMMENT ON COLUMN  "Subasta"."K_SUBASTA" IS 'Identificador de la subasta'
+COMMENT ON TABLE  Subasta IS 'Contiene las diferentes subastas realizadas para un cupo'
 ;
 
-COMMENT ON COLUMN  "Subasta"."K_CUPO" IS 'id del Cupo por el cual se crea la subasta'
+COMMENT ON COLUMN  Subasta.K_SUBASTA IS 'Identificador de la subasta'
 ;
 
-COMMENT ON COLUMN  "Subasta"."V_TOPE_MINIMO" IS 'Valor minimo para empezar la subasta'
+COMMENT ON COLUMN  Subasta.K_CUPO IS 'id del Cupo por el cual se crea la subasta'
 ;
 
-COMMENT ON COLUMN  "Subasta"."F_APERTURA" IS 'Fecha en que se abre la subasta'
+COMMENT ON COLUMN  Subasta.V_TOPE_MINIMO IS 'Valor minimo para empezar la subasta'
 ;
 
-COMMENT ON COLUMN  "Subasta"."F_CIERRE" IS 'Fecha en la que se cierra la subasta'
+COMMENT ON COLUMN  Subasta.F_APERTURA IS 'Fecha en que se abre la subasta'
 ;
 
-COMMENT ON COLUMN  "Subasta"."N_ESTADO_SUBASTA" IS 'Estado de la Subasta (''ABIERTA'',''FINALIZADA'')'
+COMMENT ON COLUMN  Subasta.F_CIERRE IS 'Fecha en la que se cierra la subasta'
 ;
 
-COMMENT ON TABLE  "Tarifa" IS 'Tarifa calculada para un cobro en espec�fico sea RESERVA, CANCELACI�N o PASO'
+COMMENT ON COLUMN  Subasta.N_ESTADO_SUBASTA IS 'Estado de la Subasta (''ABIERTA'',''FINALIZADA'')'
 ;
 
-COMMENT ON COLUMN  "Tarifa"."ID_RESERVA" IS 'Identificador de reserva en caso de que la tarifa generada sea para una reserva'
+COMMENT ON TABLE  Tarifa IS 'Tarifa calculada para un cobro en espec�fico sea RESERVA, CANCELACI�N o PASO'
 ;
 
-COMMENT ON COLUMN  "Tarifa"."ID_CANCELACION_RESERVA" IS 'Identificador de Cancelacion de reserva en caso de que la tarifa generada sea para una cancelacion reserva'
+COMMENT ON COLUMN  Tarifa.ID_RESERVA IS 'Identificador de reserva en caso de que la tarifa generada sea para una reserva'
 ;
 
-COMMENT ON COLUMN  "Tarifa"."ID_PASO" IS 'Identificador de paso en caso de que la tarifa generada sea para un paso'
+COMMENT ON COLUMN  Tarifa.ID_CANCELACION_RESERVA IS 'Identificador de Cancelacion de reserva en caso de que la tarifa generada sea para una cancelacion reserva'
 ;
 
-COMMENT ON COLUMN  "Tipo_Parametro"."K_TIPO_PARAMETRO" IS 'Identificador del tipo de tama�o'
+COMMENT ON COLUMN  Tarifa.ID_PASO IS 'Identificador de paso en caso de que la tarifa generada sea para un paso'
 ;
 
-COMMENT ON COLUMN  "Tipo_Parametro"."N_NOMBRE" IS 'Nombre del tipo de par�metro'
+COMMENT ON COLUMN  Tipo_Parametro.K_TIPO_PARAMETRO IS 'Identificador del tipo de tama�o'
 ;
 
-COMMENT ON COLUMN  "Tipo_Parametro"."N_DESCRIPCION" IS 'Descripci�n'
+COMMENT ON COLUMN  Tipo_Parametro.N_NOMBRE IS 'Nombre del tipo de par�metro'
 ;
 
-COMMENT ON TABLE  "TipoBuque" IS 'Contiene los diferentes tipos que se le pueden asginar a un buque'
+COMMENT ON COLUMN  Tipo_Parametro.N_DESCRIPCION IS 'Descripci�n'
 ;
 
-COMMENT ON COLUMN  "TipoBuque"."k_id" IS 'Identificador para un tipo de buque'
+COMMENT ON TABLE  TipoBuque IS 'Contiene los diferentes tipos que se le pueden asginar a un buque'
 ;
 
-COMMENT ON COLUMN  "TipoBuque"."n_tipo" IS 'Describe el nombre del tipo de puede tener un buque'
+COMMENT ON COLUMN  TipoBuque.k_id IS 'Identificador para un tipo de buque'
 ;
 
-COMMENT ON TABLE  "TipoCarga" IS 'Contiene los diferentes tipos de carga que puede transportar un buque'
+COMMENT ON COLUMN  TipoBuque.n_tipo IS 'Describe el nombre del tipo de puede tener un buque'
 ;
 
-COMMENT ON COLUMN  "TipoCarga"."K_TIPO_CARGA" IS 'Numero que identifica el tipo de carga'
+COMMENT ON TABLE  TipoCarga IS 'Contiene los diferentes tipos de carga que puede transportar un buque'
 ;
 
-COMMENT ON COLUMN  "TipoCarga"."N_NOMBRE" IS 'Nombre del tipo de carga que puede transportar un buque'
+COMMENT ON COLUMN  TipoCarga.K_TIPO_CARGA IS 'Numero que identifica el tipo de carga'
 ;
 
-COMMENT ON COLUMN  "TipoCarga"."N_DESCRIPCION" IS 'Descripci�n del tipo de carga que puede tranportar un Buque'
+COMMENT ON COLUMN  TipoCarga.N_NOMBRE IS 'Nombre del tipo de carga que puede transportar un buque'
 ;
 
-COMMENT ON TABLE  "Tripulacion" IS 'ENTIDAD D�BIL: Contiene la relacion entre los tripulantes que van a viajar en un paso'
+COMMENT ON COLUMN  TipoCarga.N_DESCRIPCION IS 'Descripci�n del tipo de carga que puede tranportar un Buque'
 ;
 
-COMMENT ON COLUMN  "Tripulacion"."K_ID_PASO" IS 'Llave foranea que relaciona el paso con la tripulacion'
+COMMENT ON TABLE  Tripulacion IS 'ENTIDAD D�BIL: Contiene la relacion entre los tripulantes que van a viajar en un paso'
 ;
 
-COMMENT ON COLUMN  "Tripulacion"."K_ID_TRIPULANTE" IS 'Llave foranea que relaciona el tripulante con la tripulacion que va a viajar'
+COMMENT ON COLUMN  Tripulacion.K_ID_PASO IS 'Llave foranea que relaciona el paso con la tripulacion'
 ;
 
-COMMENT ON COLUMN  "Tripulacion"."K_ID_BUQUE" IS 'Buque al que pertenece la tripulaci�n'
+COMMENT ON COLUMN  Tripulacion.K_ID_TRIPULANTE IS 'Llave foranea que relaciona el tripulante con la tripulacion que va a viajar'
 ;
 
-COMMENT ON COLUMN  "Tripulacion"."F_REGISTRO" IS 'Fecha en la que se registra la tripulaci�n'
+COMMENT ON COLUMN  Tripulacion.K_ID_BUQUE IS 'Buque al que pertenece la tripulaci�n'
 ;
 
-COMMENT ON TABLE  "Tripulante" IS 'Contiene a los tripulantes que se navegan en la embarcaci�n para el paso del Buque'
+COMMENT ON COLUMN  Tripulacion.F_REGISTRO IS 'Fecha en la que se registra la tripulaci�n'
 ;
 
-COMMENT ON COLUMN  "Tripulante"."K_ID_TRIPULANTE" IS 'Identificador del tripulante del buque'
+COMMENT ON TABLE  Tripulante IS 'Contiene a los tripulantes que se navegan en la embarcaci�n para el paso del Buque'
 ;
 
-COMMENT ON COLUMN  "Tripulante"."K_ID_PERSONA" IS 'Llave foranea que relaciona al tripulante con su informaci�n personal, los datos de Persona'
+COMMENT ON COLUMN  Tripulante.K_ID_TRIPULANTE IS 'Identificador del tripulante del buque'
 ;
 
-COMMENT ON COLUMN  "Tripulante"."N_CARGO" IS 'Cargo que desempe�a el tripulante en el buque'
+COMMENT ON COLUMN  Tripulante.K_ID_PERSONA IS 'Llave foranea que relaciona al tripulante con su informaci�n personal, los datos de Persona'
+;
+
+COMMENT ON COLUMN  Tripulante.N_CARGO IS 'Cargo que desempe�a el tripulante en el buque'
 ;
 
 /* Create Primary Keys, Indexes, Uniques, Checks, Triggers */
 
-ALTER TABLE  "Agente" 
- ADD CONSTRAINT "PK_Agente"
-	PRIMARY KEY ("K_ID_AGENTE") 
+ALTER TABLE  Agente 
+ ADD CONSTRAINT PK_Agente
+	PRIMARY KEY (K_ID_AGENTE) 
  USING INDEX
 ;
 
-ALTER TABLE  "Buque" 
- ADD CONSTRAINT "PK_Buque"
-	PRIMARY KEY ("K_NUM_SERIE") 
+ALTER TABLE  Buque 
+ ADD CONSTRAINT PK_Buque
+	PRIMARY KEY (K_NUM_SERIE) 
  USING INDEX
 ;
 
-ALTER TABLE  "Buque" 
- ADD CONSTRAINT "CK_v_beamBuq" CHECK (v_beam > 0)
+ALTER TABLE  Buque 
+ ADD CONSTRAINT CK_v_beamBuq CHECK (v_beam > 0)
 ;
 
-ALTER TABLE  "Buque" 
- ADD CONSTRAINT "CK_v_loaBuq" CHECK (v_loa > 0)
+ALTER TABLE  Buque 
+ ADD CONSTRAINT CK_v_loaBuq CHECK (v_loa > 0)
 ;
 
-ALTER TABLE  "Buque" 
- ADD CONSTRAINT "CK_v_carga_maxBuq" CHECK (v_carga_max > 0)
+ALTER TABLE  Buque 
+ ADD CONSTRAINT CK_v_carga_maxBuq CHECK (v_carga_max > 0)
 ;
 
-ALTER TABLE  "Buque" 
- ADD CONSTRAINT "CK_k_num_serieBuq" CHECK (k_num_serie > 0)
+ALTER TABLE  Buque 
+ ADD CONSTRAINT CK_k_num_serieBuq CHECK (k_num_serie > 0)
 ;
 
-ALTER TABLE  "Cancelacion_Reserva" 
- ADD CONSTRAINT "PK_CANCELACION_RESERVA"
-	PRIMARY KEY ("K_CANCELACION") 
+ALTER TABLE  Cancelacion_Reserva 
+ ADD CONSTRAINT PK_CANCELACION_RESERVA
+	PRIMARY KEY (K_CANCELACION) 
  USING INDEX
 ;
 
-ALTER TABLE  "Compania" 
- ADD CONSTRAINT "PK_Compania"
-	PRIMARY KEY ("K_ID_CLIENTE") 
+ALTER TABLE  Compania 
+ ADD CONSTRAINT PK_Compania
+	PRIMARY KEY (K_ID_CLIENTE) 
  USING INDEX
 ;
 
-ALTER TABLE  "Compania" 
- ADD CONSTRAINT "UK_COD_CLIENTE" UNIQUE ("N_COD_CLIENTE") USING INDEX 
+ALTER TABLE  Compania 
+ ADD CONSTRAINT UK_COD_CLIENTE UNIQUE (N_COD_CLIENTE) USING INDEX 
 ;
 
-ALTER TABLE  "Cupo" 
- ADD CONSTRAINT "PK_K_CUPO"
-	PRIMARY KEY ("K_CUPO") 
+ALTER TABLE  Cupo 
+ ADD CONSTRAINT PK_K_CUPO
+	PRIMARY KEY (K_CUPO) 
  USING INDEX
 ;
 
-ALTER TABLE  "Cupo" 
- ADD CONSTRAINT "CK_TIPO_ESCLUSA" CHECK (N_TIPO_ESCLUSA IN ('NEOPANAMAX','SUPER','REGULAR'))
+ALTER TABLE  Cupo 
+ ADD CONSTRAINT CK_TIPO_ESCLUSA CHECK (N_TIPO_ESCLUSA IN ('NEOPANAMAX','SUPER','REGULAR'))
 ;
 
-ALTER TABLE  "Detalle_Tarifa" 
- ADD CONSTRAINT "PK_DETALLE_TARIFA"
-	PRIMARY KEY ("K_DETALLE_TARIFA") 
+ALTER TABLE  Cupo 
+ ADD CONSTRAINT CK_TIPO_CUPO CHECK (N_TIPO_CUPO IN ('NORMAL','SUBASTADO'))
+;
+
+ALTER TABLE  Detalle_Tarifa 
+ ADD CONSTRAINT PK_DETALLE_TARIFA
+	PRIMARY KEY (K_DETALLE_TARIFA) 
  USING INDEX
 ;
 
-ALTER TABLE  "Medio_Pago" 
- ADD CONSTRAINT "PK_TipoPago"
-	PRIMARY KEY ("K_MEDIO_PAGO") 
+ALTER TABLE  Medio_Pago 
+ ADD CONSTRAINT PK_TipoPago
+	PRIMARY KEY (K_MEDIO_PAGO) 
  USING INDEX
 ;
 
-ALTER TABLE  "Oferta" 
- ADD CONSTRAINT "PK_OFERTA"
-	PRIMARY KEY ("K_OFERTA","K_SUBASTA") 
+ALTER TABLE  Oferta 
+ ADD CONSTRAINT PK_OFERTA
+	PRIMARY KEY (K_OFERTA,K_SUBASTA) 
  USING INDEX
 ;
 
-ALTER TABLE  "Oferta" 
- ADD CONSTRAINT "CK_V_OFERTA" CHECK (V_OFERTA > 0)
+ALTER TABLE  Oferta 
+ ADD CONSTRAINT CK_V_OFERTA CHECK (V_OFERTA > 0)
 ;
 
-ALTER TABLE  "Pago" 
- ADD CONSTRAINT "PK_Pago"
-	PRIMARY KEY ("K_ID_PAGO") 
+ALTER TABLE  Pago 
+ ADD CONSTRAINT PK_Pago
+	PRIMARY KEY (K_ID_PAGO) 
  USING INDEX
 ;
 
-ALTER TABLE  "Parametro" 
- ADD CONSTRAINT "PK_PARAMETRO"
-	PRIMARY KEY ("K_PARAMETRO") 
+ALTER TABLE  Parametro 
+ ADD CONSTRAINT PK_PARAMETRO
+	PRIMARY KEY (K_PARAMETRO) 
  USING INDEX
 ;
 
-ALTER TABLE  "Parametro" 
- ADD CONSTRAINT "CK_RAN_INI_FIN" CHECK (v_rango_ini <= v_rango_fin)
+ALTER TABLE  Parametro 
+ ADD CONSTRAINT CK_RAN_INI_FIN CHECK (v_rango_ini <= v_rango_fin)
 ;
 
-ALTER TABLE  "Paso" 
- ADD CONSTRAINT "PK_PASO"
-	PRIMARY KEY ("K_PASO") 
+ALTER TABLE  Paso 
+ ADD CONSTRAINT PK_PASO
+	PRIMARY KEY (K_PASO) 
  USING INDEX
 ;
 
-ALTER TABLE  "Periodo" 
- ADD CONSTRAINT "PK_PERIODO"
-	PRIMARY KEY ("K_ID_PERIODO") 
+ALTER TABLE  Periodo 
+ ADD CONSTRAINT PK_PERIODO
+	PRIMARY KEY (K_ID_PERIODO) 
  USING INDEX
 ;
 
-ALTER TABLE  "Periodo" 
- ADD CONSTRAINT "CK_DIAS" CHECK (V_DIAS_ANTES_MIN < V_DIAS_ANTES_MAX)
+ALTER TABLE  Periodo 
+ ADD CONSTRAINT CK_DIAS CHECK (V_DIAS_ANTES_MIN < V_DIAS_ANTES_MAX)
 ;
 
-ALTER TABLE  "Persona" 
- ADD CONSTRAINT "PK_Persona"
-	PRIMARY KEY ("K_ID_PERSONA") 
+ALTER TABLE  Persona 
+ ADD CONSTRAINT PK_Persona
+	PRIMARY KEY (K_ID_PERSONA) 
  USING INDEX
 ;
 
-ALTER TABLE  "Persona" 
- ADD CONSTRAINT "CK_NUM_IDENTIFICACION" CHECK (K_NUM_IDENTIFICACION > 0)
+ALTER TABLE  Persona 
+ ADD CONSTRAINT CK_NUM_IDENTIFICACION CHECK (K_NUM_IDENTIFICACION > 0)
 ;
 
-ALTER TABLE  "Persona" 
- ADD CONSTRAINT "CK_TIPO_IDENTIFICACION" CHECK (K_TIPO_IDENTIFICACION IN('CC','CE','TI','PA'))
+ALTER TABLE  Persona 
+ ADD CONSTRAINT CK_TIPO_IDENTIFICACION CHECK (K_TIPO_IDENTIFICACION IN('CC','CE','TI','PA'))
 ;
 
-ALTER TABLE  "Persona" 
- ADD CONSTRAINT "CK_GENERO" CHECK (N_GENERO IN ('M', 'F'))
+ALTER TABLE  Persona 
+ ADD CONSTRAINT CK_GENERO CHECK (N_GENERO IN ('M', 'F'))
 ;
 
-ALTER TABLE  "Pogramacion_Diaria" 
- ADD CONSTRAINT "PK_PROG_DIARIA"
-	PRIMARY KEY ("K_PROG_DIARIA") 
+ALTER TABLE  Pogramacion_Diaria 
+ ADD CONSTRAINT PK_PROG_DIARIA
+	PRIMARY KEY (K_PROG_DIARIA) 
  USING INDEX
 ;
 
-ALTER TABLE  "Pogramacion_Diaria" 
- ADD CONSTRAINT "CK_FECHA_HORA_SALIDA_LLEGADA" CHECK (F_HORA_LLEGADA <=F_HORA_SALIDA)
+ALTER TABLE  Pogramacion_Diaria 
+ ADD CONSTRAINT CK_FECHA_HORA_SALIDA_LLEGADA CHECK (F_HORA_LLEGADA <=F_HORA_SALIDA)
 ;
 
-ALTER TABLE  "Puerto" 
- ADD CONSTRAINT "PK_PUERTO"
-	PRIMARY KEY ("K_PUERTO") 
+ALTER TABLE  Puerto 
+ ADD CONSTRAINT PK_PUERTO
+	PRIMARY KEY (K_PUERTO) 
  USING INDEX
 ;
 
-ALTER TABLE  "Reserva" 
- ADD CONSTRAINT "PK_Reserva"
-	PRIMARY KEY ("K_RESERVA") 
+ALTER TABLE  Reserva 
+ ADD CONSTRAINT PK_Reserva
+	PRIMARY KEY (K_RESERVA) 
  USING INDEX
 ;
 
-ALTER TABLE  "Reserva" 
- ADD CONSTRAINT "CK_i_estado" CHECK (I_ESTADO in ('PENDIENTE', 'PAGADA', 'CANCELADA','FINALIZADA'))
+ALTER TABLE  Reserva 
+ ADD CONSTRAINT CK_i_estado CHECK (I_ESTADO in ('PENDIENTE', 'PAGADA', 'CANCELADA','FINALIZADA'))
 ;
 
-ALTER TABLE  "Subasta" 
- ADD CONSTRAINT "PK_Subasta"
-	PRIMARY KEY ("K_SUBASTA") 
+ALTER TABLE  Subasta 
+ ADD CONSTRAINT PK_Subasta
+	PRIMARY KEY (K_SUBASTA) 
  USING INDEX
 ;
 
-ALTER TABLE  "Subasta" 
- ADD CONSTRAINT "CK_v_tope_minimo" CHECK (v_tope_minimo > 0)
+ALTER TABLE  Subasta 
+ ADD CONSTRAINT CK_v_tope_minimo CHECK (v_tope_minimo > 0)
 ;
 
-ALTER TABLE  "Subasta" 
- ADD CONSTRAINT "CK_ESTADO_SUBASTA" CHECK (N_ESTADO_SUBASTA IN ('ABIERTA','FINALIZADA'))
+ALTER TABLE  Subasta 
+ ADD CONSTRAINT CK_ESTADO_SUBASTA CHECK (N_ESTADO_SUBASTA IN ('ABIERTA','FINALIZADA'))
 ;
 
-ALTER TABLE  "Tarifa" 
- ADD CONSTRAINT "PK_TARIFA"
-	PRIMARY KEY ("K_TARIFA") 
+ALTER TABLE  Tarifa 
+ ADD CONSTRAINT PK_TARIFA
+	PRIMARY KEY (K_TARIFA) 
  USING INDEX
 ;
 
-ALTER TABLE  "Tipo_Parametro" 
- ADD CONSTRAINT "PK_TIPO_PARAMETRO"
-	PRIMARY KEY ("K_TIPO_PARAMETRO") 
+ALTER TABLE  Tipo_Parametro 
+ ADD CONSTRAINT PK_TIPO_PARAMETRO
+	PRIMARY KEY (K_TIPO_PARAMETRO) 
  USING INDEX
 ;
 
-ALTER TABLE  "TipoBuque" 
- ADD CONSTRAINT "PK_TipoBuque"
-	PRIMARY KEY ("k_id") 
+ALTER TABLE  TipoBuque 
+ ADD CONSTRAINT PK_TipoBuque
+	PRIMARY KEY (k_id) 
  USING INDEX
 ;
 
-ALTER TABLE  "TipoBuque" 
- ADD CONSTRAINT "CK_V_BEAN" CHECK (v_bean_min < v_bean_max AND v_bean_min >0 AND v_bean_max > 0)
+ALTER TABLE  TipoBuque 
+ ADD CONSTRAINT CK_V_BEAN CHECK (v_bean_min < v_bean_max AND v_bean_min >0 AND v_bean_max > 0)
 ;
 
-ALTER TABLE  "TipoBuque" 
- ADD CONSTRAINT "CK_V_LENGTH" CHECK (v_length_min < v_length_max AND v_length_min > 0 AND v_length_max > 0)
+ALTER TABLE  TipoBuque 
+ ADD CONSTRAINT CK_V_LENGTH CHECK (v_length_min < v_length_max AND v_length_min > 0 AND v_length_max > 0)
 ;
 
-ALTER TABLE  "TipoCarga" 
- ADD CONSTRAINT "PK_Carga"
-	PRIMARY KEY ("K_TIPO_CARGA") 
+ALTER TABLE  TipoCarga 
+ ADD CONSTRAINT PK_Carga
+	PRIMARY KEY (K_TIPO_CARGA) 
  USING INDEX
 ;
 
-ALTER TABLE  "Tripulacion" 
- ADD CONSTRAINT "PK_Tripulacion"
-	PRIMARY KEY ("K_ID_TRIPULACION") 
+ALTER TABLE  Tripulacion 
+ ADD CONSTRAINT PK_Tripulacion
+	PRIMARY KEY (K_ID_TRIPULACION) 
  USING INDEX
 ;
 
-ALTER TABLE  "Tripulante" 
- ADD CONSTRAINT "PK_Tripulante"
-	PRIMARY KEY ("K_ID_TRIPULANTE") 
+ALTER TABLE  Tripulante 
+ ADD CONSTRAINT PK_Tripulante
+	PRIMARY KEY (K_ID_TRIPULANTE) 
  USING INDEX
 ;
 
 /* Create Foreign Key Constraints */
 
-ALTER TABLE  "Agente" 
- ADD CONSTRAINT "FK_Agente_Compania"
-	FOREIGN KEY ("K_ID_COMPANIA") REFERENCES  "Compania" ("K_ID_CLIENTE")
+ALTER TABLE  Agente 
+ ADD CONSTRAINT FK_Agente_Compania
+	FOREIGN KEY (K_ID_COMPANIA) REFERENCES  Compania (K_ID_CLIENTE)
 ;
 
-ALTER TABLE  "Agente" 
- ADD CONSTRAINT "FK_Agente_Persona"
-	FOREIGN KEY ("K_ID_PERSONA") REFERENCES  "Persona" ("K_ID_PERSONA")
+ALTER TABLE  Agente 
+ ADD CONSTRAINT FK_Agente_Persona
+	FOREIGN KEY (K_ID_PERSONA) REFERENCES  Persona (K_ID_PERSONA)
 ;
 
-ALTER TABLE  "Buque" 
- ADD CONSTRAINT "FK_Buque_Carga"
-	FOREIGN KEY ("K_TIPO_CARGA") REFERENCES  "TipoCarga" ("K_TIPO_CARGA")
+ALTER TABLE  Buque 
+ ADD CONSTRAINT FK_Buque_Carga
+	FOREIGN KEY (K_TIPO_CARGA) REFERENCES  TipoCarga (K_TIPO_CARGA)
 ;
 
-ALTER TABLE  "Buque" 
- ADD CONSTRAINT "FK_Buque_TipoBuque"
-	FOREIGN KEY ("K_TIPO_BUQUE") REFERENCES  "TipoBuque" ("k_id")
+ALTER TABLE  Buque 
+ ADD CONSTRAINT FK_Buque_TipoBuque
+	FOREIGN KEY (K_TIPO_BUQUE) REFERENCES  TipoBuque (k_id)
 ;
 
-ALTER TABLE  "Cancelacion_Reserva" 
- ADD CONSTRAINT "FK_Cancelacion_Reserva_Agente"
-	FOREIGN KEY ("ID_AGENTE") REFERENCES  "Agente" ("K_ID_AGENTE")
+ALTER TABLE  Cancelacion_Reserva 
+ ADD CONSTRAINT FK_Cancelacion_Reserva_Agente
+	FOREIGN KEY (ID_AGENTE) REFERENCES  Agente (K_ID_AGENTE)
 ;
 
-ALTER TABLE  "Cancelacion_Reserva" 
- ADD CONSTRAINT "FK_Cancelacion_Reserva_Reserva"
-	FOREIGN KEY ("K_RESERVA") REFERENCES  "Reserva" ("K_RESERVA")
+ALTER TABLE  Cancelacion_Reserva 
+ ADD CONSTRAINT FK_Cancelacion_Reserva_Reserva
+	FOREIGN KEY (K_RESERVA) REFERENCES  Reserva (K_RESERVA)
 ;
 
-ALTER TABLE  "Detalle_Tarifa" 
- ADD CONSTRAINT "FK_Detalle_Tarifa_Tarifa"
-	FOREIGN KEY ("K_TARIFA") REFERENCES  "Tarifa" ("K_TARIFA")
+ALTER TABLE  Detalle_Tarifa 
+ ADD CONSTRAINT FK_Detalle_Tarifa_Tarifa
+	FOREIGN KEY (K_TARIFA) REFERENCES  Tarifa (K_TARIFA)
 ;
 
-ALTER TABLE  "Detalle_Tarifa" 
- ADD CONSTRAINT "FK_Tarifa_Parametro_Parametro"
-	FOREIGN KEY ("K_PARAMETRO") REFERENCES  "Parametro" ("K_PARAMETRO")
+ALTER TABLE  Detalle_Tarifa 
+ ADD CONSTRAINT FK_Tarifa_Parametro_Parametro
+	FOREIGN KEY (K_PARAMETRO) REFERENCES  Parametro (K_PARAMETRO)
 ;
 
-ALTER TABLE  "Oferta" 
- ADD CONSTRAINT "FK_OFERTA_AGENTE"
-	FOREIGN KEY ("K_IDAGENTE") REFERENCES  "Agente" ("K_ID_AGENTE")
+ALTER TABLE  Oferta 
+ ADD CONSTRAINT FK_OFERTA_AGENTE
+	FOREIGN KEY (K_IDAGENTE) REFERENCES  Agente (K_ID_AGENTE)
 ;
 
-ALTER TABLE  "Oferta" 
- ADD CONSTRAINT "FK_OFERTA_SUBASTA"
-	FOREIGN KEY ("K_SUBASTA") REFERENCES  "Subasta" ("K_SUBASTA")
+ALTER TABLE  Oferta 
+ ADD CONSTRAINT FK_OFERTA_SUBASTA
+	FOREIGN KEY (K_SUBASTA) REFERENCES  Subasta (K_SUBASTA)
 ;
 
-ALTER TABLE  "Pago" 
- ADD CONSTRAINT "FK_Pago_Tarifa"
-	FOREIGN KEY ("K_TARIFA") REFERENCES  "Tarifa" ("K_TARIFA")
+ALTER TABLE  Pago 
+ ADD CONSTRAINT FK_Pago_Tarifa
+	FOREIGN KEY (K_TARIFA) REFERENCES  Tarifa (K_TARIFA)
 ;
 
-ALTER TABLE  "Pago" 
- ADD CONSTRAINT "FK_Pago_TipoPago"
-	FOREIGN KEY ("K_MEDIO_PAGO") REFERENCES  "Medio_Pago" ("K_MEDIO_PAGO")
+ALTER TABLE  Pago 
+ ADD CONSTRAINT FK_Pago_TipoPago
+	FOREIGN KEY (K_MEDIO_PAGO) REFERENCES  Medio_Pago (K_MEDIO_PAGO)
 ;
 
-ALTER TABLE  "Parametro" 
- ADD CONSTRAINT "FK_Parametro_Tipo_Parametro"
-	FOREIGN KEY ("K_TIPO_PARAMETRO") REFERENCES  "Tipo_Parametro" ("K_TIPO_PARAMETRO")
+ALTER TABLE  Parametro 
+ ADD CONSTRAINT FK_Parametro_Tipo_Parametro
+	FOREIGN KEY (K_TIPO_PARAMETRO) REFERENCES  Tipo_Parametro (K_TIPO_PARAMETRO)
 ;
 
-ALTER TABLE  "Paso" 
- ADD CONSTRAINT "FK_Paso_Pogramacion_Diaria"
-	FOREIGN KEY ("K_PROG_DIARIA") REFERENCES  "Pogramacion_Diaria" ("K_PROG_DIARIA")
+ALTER TABLE  Paso 
+ ADD CONSTRAINT FK_Paso_Pogramacion_Diaria
+	FOREIGN KEY (K_PROG_DIARIA) REFERENCES  Pogramacion_Diaria (K_PROG_DIARIA)
 ;
 
-ALTER TABLE  "Pogramacion_Diaria" 
- ADD CONSTRAINT "FK_Pogramacion_Diaria_Reserva"
-	FOREIGN KEY ("K_RESERVA") REFERENCES  "Reserva" ("K_RESERVA")
+ALTER TABLE  Pogramacion_Diaria 
+ ADD CONSTRAINT FK_Pogramacion_Diaria_Reserva
+	FOREIGN KEY (K_RESERVA) REFERENCES  Reserva (K_RESERVA)
 ;
 
-ALTER TABLE  "Pogramacion_Diaria" 
- ADD CONSTRAINT "FK_Prog_dia_Puerto_Llegada"
-	FOREIGN KEY ("K_PUERTO_LLEGADA") REFERENCES  "Puerto" ("K_PUERTO")
+ALTER TABLE  Pogramacion_Diaria 
+ ADD CONSTRAINT FK_Prog_dia_Puerto_Llegada
+	FOREIGN KEY (K_PUERTO_LLEGADA) REFERENCES  Puerto (K_PUERTO)
 ;
 
-ALTER TABLE  "Pogramacion_Diaria" 
- ADD CONSTRAINT "FK_Prog_Dia_Puerto_Salida"
-	FOREIGN KEY ("K_PUERTO_SALIDA") REFERENCES  "Puerto" ("K_PUERTO")
+ALTER TABLE  Pogramacion_Diaria 
+ ADD CONSTRAINT FK_Prog_Dia_Puerto_Salida
+	FOREIGN KEY (K_PUERTO_SALIDA) REFERENCES  Puerto (K_PUERTO)
 ;
 
-ALTER TABLE  "Reserva" 
- ADD CONSTRAINT "FK_Reserva_Agente"
-	FOREIGN KEY ("K_AGENTE") REFERENCES  "Agente" ("K_ID_AGENTE")
+ALTER TABLE  Reserva 
+ ADD CONSTRAINT FK_Reserva_Agente
+	FOREIGN KEY (K_AGENTE) REFERENCES  Agente (K_ID_AGENTE)
 ;
 
-ALTER TABLE  "Reserva" 
- ADD CONSTRAINT "FK_Reserva_Cupo"
-	FOREIGN KEY ("K_CUPO") REFERENCES  "Cupo" ("K_CUPO")
+ALTER TABLE  Reserva 
+ ADD CONSTRAINT FK_Reserva_Cupo
+	FOREIGN KEY (K_CUPO) REFERENCES  Cupo (K_CUPO)
 ;
 
-ALTER TABLE  "Reserva" 
- ADD CONSTRAINT "FK_Reserva_Periodo"
-	FOREIGN KEY ("K_PERIODO") REFERENCES  "Periodo" ("K_ID_PERIODO")
+ALTER TABLE  Reserva 
+ ADD CONSTRAINT FK_Reserva_Periodo
+	FOREIGN KEY (K_PERIODO) REFERENCES  Periodo (K_ID_PERIODO)
 ;
 
-ALTER TABLE  "Reserva" 
- ADD CONSTRAINT "FK_Reserva_Buque"
-	FOREIGN KEY ("K_ID_BUQUE") REFERENCES  "Buque" ("K_NUM_SERIE")
+ALTER TABLE  Reserva 
+ ADD CONSTRAINT FK_Reserva_Buque
+	FOREIGN KEY (K_ID_BUQUE) REFERENCES  Buque (K_NUM_SERIE)
 ;
 
-ALTER TABLE  "Subasta" 
- ADD CONSTRAINT "FK_Subasta_Cupo"
-	FOREIGN KEY ("K_CUPO") REFERENCES  "Cupo" ("K_CUPO")
+ALTER TABLE  Subasta 
+ ADD CONSTRAINT FK_Subasta_Cupo
+	FOREIGN KEY (K_CUPO) REFERENCES  Cupo (K_CUPO)
 ;
 
-ALTER TABLE  "Tarifa" 
- ADD CONSTRAINT "FK_Tarifa_Cancelacion_Reserva"
-	FOREIGN KEY ("ID_CANCELACION_RESERVA") REFERENCES  "Cancelacion_Reserva" ("K_CANCELACION")
+ALTER TABLE  Tarifa 
+ ADD CONSTRAINT FK_Tarifa_Cancelacion_Reserva
+	FOREIGN KEY (ID_CANCELACION_RESERVA) REFERENCES  Cancelacion_Reserva (K_CANCELACION)
 ;
 
-ALTER TABLE  "Tarifa" 
- ADD CONSTRAINT "FK_Tarifa_Paso"
-	FOREIGN KEY ("ID_PASO") REFERENCES  "Paso" ("K_PASO")
+ALTER TABLE  Tarifa 
+ ADD CONSTRAINT FK_Tarifa_Paso
+	FOREIGN KEY (ID_PASO) REFERENCES  Paso (K_PASO)
 ;
 
-ALTER TABLE  "Tarifa" 
- ADD CONSTRAINT "FK_Tarifa_Reserva"
-	FOREIGN KEY ("ID_RESERVA") REFERENCES  "Reserva" ("K_RESERVA")
+ALTER TABLE  Tarifa 
+ ADD CONSTRAINT FK_Tarifa_Reserva
+	FOREIGN KEY (ID_RESERVA) REFERENCES  Reserva (K_RESERVA)
 ;
 
-ALTER TABLE  "Tripulacion" 
- ADD CONSTRAINT "FK_Tripulacion_Paso"
-	FOREIGN KEY ("K_ID_PASO") REFERENCES  "Paso" ("K_PASO")
+ALTER TABLE  Tripulacion 
+ ADD CONSTRAINT FK_Tripulacion_Paso
+	FOREIGN KEY (K_ID_PASO) REFERENCES  Paso (K_PASO)
 ;
 
-ALTER TABLE  "Tripulacion" 
- ADD CONSTRAINT "FK_Tripulacion_Tripulante"
-	FOREIGN KEY ("K_ID_TRIPULANTE") REFERENCES  "Tripulante" ("K_ID_TRIPULANTE")
+ALTER TABLE  Tripulacion 
+ ADD CONSTRAINT FK_Tripulacion_Tripulante
+	FOREIGN KEY (K_ID_TRIPULANTE) REFERENCES  Tripulante (K_ID_TRIPULANTE)
 ;
 
-ALTER TABLE  "Tripulante" 
- ADD CONSTRAINT "FK_Tripulante_Persona"
-	FOREIGN KEY ("K_ID_PERSONA") REFERENCES  "Persona" ("K_ID_PERSONA")
+ALTER TABLE  Tripulante 
+ ADD CONSTRAINT FK_Tripulante_Persona
+	FOREIGN KEY (K_ID_PERSONA) REFERENCES  Persona (K_ID_PERSONA)
 ;
