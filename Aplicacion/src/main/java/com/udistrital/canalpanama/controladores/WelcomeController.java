@@ -21,16 +21,20 @@ public class WelcomeController {
 
 	@RequestMapping("/")
 	public String welcome(Model model) {
-		try {
-			odbManager.conectar();
-	    }catch(Exception e) {
+		//try {
+			if (odbManager.tomarConexion() == null) {
+				return "login";
+			}
+			model.addAttribute("mensajeTitulo", "Conectado");
+			return "index";
+			//model.addAttribute("mensajeTitulo", this.message);
+	    /*}catch(Exception e) {
 	    	//return new ResponseEntity<>(e.getMessage(),HttpStatus.UNAUTHORIZED);
-	    	model.addAttribute("mensajeTitulo", "Error en conexion");
-	    }
-	    	model.addAttribute("mensajeTitulo", "Conectado");
+	    	//model.addAttribute("mensajeTitulo", "Error en conexion");
 	    	
-		model.addAttribute("mensajeTitulo", this.message);
-		return "welcome"; //Se retorna el nombre de la vista HTML
+	    	
+	    }*/
+	    	
 	}
 	
 

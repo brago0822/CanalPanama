@@ -72,9 +72,9 @@ VALUES (3,4,3,80,500,5000);
 ------ INSERCIÓN DE DATOS EN CUPO
 -----------------------------------------------------------------------------------------
 INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (1,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'));
+VALUES (1,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
 INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (2,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'));
+VALUES (2,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
 INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
 VALUES (3,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
 INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
