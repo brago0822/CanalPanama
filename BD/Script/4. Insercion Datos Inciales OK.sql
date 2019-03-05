@@ -21,7 +21,10 @@ VALUES (3,'CLI-33333','BUQUES ATLANTICO',5555552,'CLL','ESPAÑA',14444444);
 INSERT INTO Compania (k_id_cliente, n_cod_cliente, n_nombre,q_telefono,n_direccion,n_pais,n_nit)
 VALUES (4,'CLI-44444','BUQUES EUROPA',5555553,'CLL','FRANCIA',15555555);
 
+-----------------------------------------------------------------------------------------
+------ INSERCIÓN DE DATOS EN AGENTE
 --REQUISITOS: SE NECESITA ID_COMPANIA, ID_PERSONA
+-----------------------------------------------------------------------------------------
 INSERT INTO Agente (k_id_agente,k_id_compania,k_id_persona)
 VALUES (1,1,1);
 INSERT INTO Agente (k_id_agente,k_id_compania,k_id_persona)
@@ -82,3 +85,80 @@ INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo)
 VALUES (6,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
 INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
 VALUES (7,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
+
+-----------------------------------------------------------------------------------------
+------ INSERCIÓN DE DATOS EN MEDIO_PAGO
+-----------------------------------------------------------------------------------------
+INSERT INTO medio_pago (k_medio_pago, n_nombre,n_descripcion) 
+VALUES (1, 'ONLINE','Pago realizado a través de la misma aplicación');
+INSERT INTO medio_pago (k_medio_pago, n_nombre,n_descripcion) 
+VALUES (2, 'TARJETA DE CREDITO','Paso a traves de Tarjeta de Crédito registrada para la empresa');
+INSERT INTO medio_pago (k_medio_pago, n_nombre,n_descripcion) 
+VALUES (3, 'TRANSFERENCIA','Pago por tarnsferencia a través de Banco externo a la aplicación');
+
+-----------------------------------------------------------------------------------------
+------ INSERCIÓN DE DATOS EN TIPO_PARAMETRO
+-----------------------------------------------------------------------------------------
+INSERT INTO tipo_parametro (k_tipo_parametro, n_nombre, n_descripcion, n_sigla)
+VALUES (1,'LOA','Length Over All - Eslora','LOA');
+INSERT INTO tipo_parametro (k_tipo_parametro, n_nombre, n_descripcion, n_sigla)
+VALUES (2,'BEAM','Ancho - Manga','BEAM');
+INSERT INTO tipo_parametro (k_tipo_parametro, n_nombre, n_descripcion, n_sigla)
+VALUES (3,'PORCENTAJE CARGA','Porcentaje de Carga al momento del paso con el que se establecerá una tarifa','CARG');
+INSERT INTO tipo_parametro (k_tipo_parametro, n_nombre, n_descripcion, n_sigla)
+VALUES (4,'CANCELACION','Parámetros para calcular tarifa de Cancelación según días de antelación en PORCENTAJE','CANC');
+INSERT INTO tipo_parametro (k_tipo_parametro, n_nombre, n_descripcion, n_sigla)
+VALUES (5,'PERIODO','Parámetro para establecer tarifa según días establecidos para cada período','PERI');
+INSERT INTO tipo_parametro (k_tipo_parametro, n_nombre, n_descripcion, n_sigla)
+VALUES (6,'CLASIFICACION BUQUE','Parámetro para establecer tarifa según Clase de Buque','CLBU');
+INSERT INTO tipo_parametro (k_tipo_parametro, n_nombre, n_descripcion, n_sigla)
+VALUES (7,'SUBASTA','Parámetros para tope mínimo de subastas','SUBA');
+INSERT INTO tipo_parametro (k_tipo_parametro, n_nombre, n_descripcion, n_sigla)
+VALUES (8,'CUPO','Parámetro para definir el máximo de cupos diarios disponibles según períodos establecidos','CUPO');
+
+-----------------------------------------------------------------------------------------
+------ INSERCIÓN DE DATOS EN PARAMETRO
+--      REQUISITOS TIPO_PARAMETRO
+-----------------------------------------------------------------------------------------
+---***** PARAMETROS BEAM Y LOA PARA TARIFA
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (1,'BEAM1',0,79.99,2,5500,'01/01/2019','31/12/2019');
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (2,'BEAM2',80,90.99,2,10500,'01/01/2019','31/12/2019');
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (3,'BEAM3',91,107,2,25000,'01/01/2019','31/12/2019');
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (4,'BEAM4',107.01,999999,2,35000,'01/01/2019','31/12/2019');
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (5,'LOA1',0,300,1,2500,'01/01/2019','31/12/2019');
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (6,'LOA2',300.01,899.99,1,18500,'01/01/2019','31/12/2019');
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (7,'LOA3',900,966,1,35000,'01/01/2019','31/12/2019');
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (8,'LOA4',966.01,999999,1,35000,'01/01/2019','31/12/2019');
+--**** PARÁMETROS CUPO
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (9,'CUPOS2019',0,0,8,8,'01/01/2019','31/12/2019');-- CUANDO NO EXISTEN UN RANGO SE DEJA EN VALOR 0 Y SÓLO SE ESTABLECE EL VALOR PARÁMETRO
+--**** PARÁMETROS CANCELACIÓN
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (10,'CANCEL1',0,3.99,4,100,'01/01/2019','31/12/2019');-- VALOR EN PORCENTAJE DE MULTA POR CANCELACIÓN
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (11,'CANCEL2',4,6.99,4,80,'01/01/2019','31/12/2019');-- VALOR EN PORCENTAJE DE MULTA POR CANCELACIÓN
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (12,'CANCEL3',7,20.99,4,70,'01/01/2019','31/12/2019');-- VALOR EN PORCENTAJE DE MULTA POR CANCELACIÓN
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (13,'CANCEL4',21,89.99,4,60,'01/01/2019','31/12/2019');-- VALOR EN PORCENTAJE DE MULTA POR CANCELACIÓN
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (14,'CANCEL5',90,179.99,4,50,'01/01/2019','31/12/2019');-- VALOR EN PORCENTAJE DE MULTA POR CANCELACIÓN
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (15,'CANCEL6',180,364.99,4,20,'01/01/2019','31/12/2019');-- VALOR EN PORCENTAJE DE MULTA POR CANCELACIÓN
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (16,'CANCEL7',365,999999,4,10,'01/01/2019','31/12/2019');-- VALOR EN PORCENTAJE DE MULTA POR CANCELACIÓN
+-- **** PARAMETROS SUBASTA
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (17,'SUBASTA_NEOPANAMAX',0,0,7,50000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (18,'SUBASTA_SUPER',0,0,7,35000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (19,'SUBASTA_REGULAR',0,0,7,15000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO

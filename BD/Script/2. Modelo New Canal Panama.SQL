@@ -239,7 +239,7 @@ CREATE TABLE  Parametro
 	V_RANGO_INI NUMBER(8,2) NOT NULL,    -- Rango inicial para el valor que se establece
 	V_RANGO_FIN NUMBER(8,2) NOT NULL,    -- Rango inicial para el valor que se establece
 	K_TIPO_PARAMETRO NUMBER(8) NOT NULL,    -- Tipo de Par�metro seg�n la tabla Tipo_Parametro
-	V_TARIFA_PARAMETRO NUMBER(8,2) NOT NULL,    -- Tarifa Base establecida para el par�metro del tipo de tarifa indicado
+	V_VALOR_PARAMETRO NUMBER(8,2) NOT NULL,    -- Valor establecido para el par�metro del tipo indicado
 	F_VIGENCIA_INI DATE NULL,    -- Vigencia Inicial para la tarifa seg�n el par�metro establecido
 	F_VIGENCIA_FIN DATE NULL    -- Vigencia final para la tarifa seg�n el par�metro establecido
 )
@@ -341,7 +341,7 @@ CREATE TABLE  Tipo_Parametro
 (
 	K_TIPO_PARAMETRO NUMBER(10) NOT NULL,    -- Identificador del tipo de tama�o
 	N_NOMBRE VARCHAR2(70) NOT NULL,    -- Nombre del tipo de par�metro
-	N_DESCRIPCION VARCHAR2(50) NULL,    -- Descripci�n
+	N_DESCRIPCION VARCHAR2(200) NULL,    -- Descripci�n
 	N_SIGLA VARCHAR2(10) NULL
 )
 ;
@@ -547,7 +547,7 @@ COMMENT ON COLUMN  Parametro.V_RANGO_FIN IS 'Rango inicial para el valor que se 
 COMMENT ON COLUMN  Parametro.K_TIPO_PARAMETRO IS 'Tipo de Par�metro seg�n la tabla Tipo_Parametro'
 ;
 
-COMMENT ON COLUMN  Parametro.V_TARIFA_PARAMETRO IS 'Tarifa Base establecida para el par�metro del tipo de tarifa indicado'
+COMMENT ON COLUMN  Parametro.V_TARIFA_PARAMETRO IS 'Valor establecido para el par�metro del tipo indicado'
 ;
 
 COMMENT ON COLUMN  Parametro.F_VIGENCIA_INI IS 'Vigencia Inicial para la tarifa seg�n el par�metro establecido'
