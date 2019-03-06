@@ -19,19 +19,12 @@ public class WelcomeController {
 
 	@RequestMapping("/")
 	public String welcome(Model model) {
-		//try {
-			if (odbManager.tomarConexion() == null) {
-				return "login";
-			}
-			model.addAttribute("mensajeTitulo", "Conectado");
-			return "index";
-			//model.addAttribute("mensajeTitulo", this.message);
-	    /*}catch(Exception e) {
-	    	//return new ResponseEntity<>(e.getMessage(),HttpStatus.UNAUTHORIZED);
-	    	//model.addAttribute("mensajeTitulo", "Error en conexion");
-	    	
-	    	
-	    }*/
+		
+		if (odbManager.tomarConexion() == null) {
+			return "login";
+		}
+		
+		return "index";
 	    	
 	}
 	

@@ -20,8 +20,7 @@ public class UsuarioDAO {
 		 Connection conexion = odbManager.tomarConexion();		 
 		 if(conexion != null) {
 			 Statement st = conexion.createStatement();
-			 ResultSet rec = st.executeQuery("SELECT k_conjunto FROM apartamento");
-			
+			 ResultSet rec = st.executeQuery("SELECT user FROM DUAL");
 			 String user =  ""+rec.next();//rec.getString(1);
 			 st.close();
 		     odbManager.liberarConexion();

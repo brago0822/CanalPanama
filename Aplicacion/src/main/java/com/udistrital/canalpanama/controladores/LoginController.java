@@ -29,11 +29,11 @@ public class LoginController {
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public ResponseEntity<String> login(@RequestBody Usuario usuario, Model model) throws Exception {
     	try {
-    	odbManager.conectar(usuario);
-//    	odbManager.liberarConexion();
+	    	odbManager.conectar(usuario);
+	    	model.addAttribute("usuarioNombre", "Pepito"/*usuario.getUser()*/);
+	//    	odbManager.liberarConexion();
     	}catch(Exception e) {
     		return new ResponseEntity<>(e.getMessage(),HttpStatus.UNAUTHORIZED);
-
     	}
     	model.addAttribute("mensajeTitulo", "Mensaje");
     	return new ResponseEntity<>("La sesión ha sido iniciada correctamente",HttpStatus.OK);
