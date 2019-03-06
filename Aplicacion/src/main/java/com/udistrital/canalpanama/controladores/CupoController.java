@@ -47,7 +47,7 @@ public class CupoController {
 	    	//model.addAttribute("mensajeTitulo", "Conectado");
 		//return "Cupo";
     	odbManager.liberarConexion();
-    	return "cupos/list-cupos";
+    	return "cupos/ListadoCupos";
 	}
 
 }

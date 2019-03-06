@@ -36,7 +36,7 @@ public class LoginController {
 
     	}
     	model.addAttribute("mensajeTitulo", "Mensaje");
-    	return new ResponseEntity<>("Conectado a la base de datos",HttpStatus.OK);
+    	return new ResponseEntity<>("La sesión ha sido iniciada correctamente",HttpStatus.OK);
     }
     
     @RequestMapping(value="/loadUser",method=RequestMethod.POST)

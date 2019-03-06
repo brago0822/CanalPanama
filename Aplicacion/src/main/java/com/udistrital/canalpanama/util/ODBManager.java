@@ -77,13 +77,13 @@ public class ODBManager {
 	 */
 	public synchronized Connection tomarConexion() {
 		if(conexion != null) {
-			while (!conexionLibre) {
+			/*while (!conexionLibre) {
 				try {
 				  wait();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}
+			}*/
 			conexionLibre = false;
 			notify();
 			return conexion;
