@@ -58,7 +58,7 @@ PROCEDURE PR_CALCULAR_TARIFA_CANCELACION(pk_reserva         IN reserva.k_reserva
    
 ----------------------------------------------------------------------------------------------*/
 PROCEDURE PR_REGISTRAR_RESERVA( pk_cupo          IN cupo.k_cupo%TYPE,
-                                idAgente         IN agente.k_id_agente%TYPE,
+                                pk_idAgente      IN agente.k_id_agente%TYPE,
                                 pk_buque         IN buque.k_num_serie%TYPE,
                                 pm_mensaje       OUT VARCHAR2,
                                 pc_error         OUT NUMBER,

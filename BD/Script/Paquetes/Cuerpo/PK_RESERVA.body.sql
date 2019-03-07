@@ -21,7 +21,7 @@ PROCEDURE PR_CALCULAR_TARIFA_RESERVA(pk_reserva         IN reserva.k_reserva%TYP
                                      pm_mensaje         OUT VARCHAR2,
                                      pc_error           OUT NUMBER,
                                      pm_error           OUT VARCHAR2) IS 
-                                     
+
     LK_ID_NUEVA_TARIFA  TARIFA.K_TARIFA%TYPE;
     LV_BEAM             buque.v_beam%TYPE;
     LV_LOA              buque.v_loa%TYPE;
@@ -34,7 +34,7 @@ PROCEDURE PR_CALCULAR_TARIFA_RESERVA(pk_reserva         IN reserva.k_reserva%TYP
     LV_TARIFA_PERIODO   PARAMETRO.V_VALOR_PARAMETRO%TYPE;
     LV_ID_PERIODO       periodo.k_id_periodo%TYPE;
     LV_DIAS_ANTES_PASO  NUMBER;
-    
+
     EX_PARAMETRO_NO_ENCONTRADO      EXCEPTION;
 
 BEGIN
@@ -43,13 +43,13 @@ BEGIN
     --2 BEAM
     --5 PERIODO
     --6 BUQUE
-    
+
     -- RECIBO COMO PARÁMETRO (K_RESERVA) QUE YA DEBE ESTAR REGISTRADA
     -- SE BUSCAN LAS CARACTERÍSTICAS DEL BUQUE ASOCIADO A LA RESERVA
     PV_TARIFA_TOTAL := 0;
-    
+
     LK_ID_NUEVA_TARIFA := SEQ_TARIFA.NEXTVAL;
-    
+
     INSERT 
       INTO tarifa (
                     k_tarifa,
@@ -73,7 +73,7 @@ BEGIN
                     NULL
                 );
     COMMIT;
-    
+
     SELECT buqu.v_beam,
            buqu.v_loa,
            cupo.f_cupo
@@ -84,7 +84,7 @@ BEGIN
       JOIN BUQUE    buqu ON buqu.k_num_serie = rese.k_id_buque
       JOIN cupo     cupo ON cupo.k_cupo      = rese.k_cupo
      WHERE rese.k_reserva = pk_reserva;
-     
+
     -- Se obtiene el valor de la tarifa para BEAM
     SELECT k_parametro, V_VALOR_PARAMETRO
       INTO LK_PARAM_BEAM, lv_tarifa_beam
@@ -110,7 +110,7 @@ BEGIN
      WHERE v_rango_ini >= LV_LOA AND LV_LOA <= v_rango_fin
        AND k_tipo_parametro = 1 --LOA
        ;
-       
+
      -- Se inserta el valor del parámetro encontrado en DETALLE_TARIFA
     INSERT  
       INTO detalle_tarifa (k_detalle_tarifa,
@@ -126,13 +126,13 @@ BEGIN
     SELECT TRUNC(TO_DATE(lf_fecha_cupo,'DD/MM/YYYY HH24:MI:SS')) - TRUNC(SYSDATE) 
       INTO lv_dias_antes_paso
       FROM DUAL;
-    
+
     -- Se obtiene el período en el que se está realizando la reserva
     SELECT K_ID_PERIODO
       INTO LV_ID_PERIODO
       FROM PERIODO
      WHERE v_dias_antes_min <= lv_dias_antes_paso AND lv_dias_antes_paso <= v_dias_antes_max;
-    
+
     -- Se obtiene la tarifa para el periodo correspondiente
     SELECT K_PARAMETRO, V_VALOR_PARAMETRO
       INTO LK_PARAM_PERIODO, lv_tarifa_periodo
@@ -152,12 +152,12 @@ BEGIN
     );
     COMMIT;
     PV_TARIFA_TOTAL := lv_tarifa_beam + lv_tarifa_loa + lv_tarifa_periodo;
-    
+
     --SE REALIA LA ACTUALIZACIÓN DE LA TARIFA DESPUÉS DE HABER SUMADO CADA UNA DE LAS TARIFAS INDIVIDUALES
     UPDATE TARIFA 
        SET v_valor_tarifa = PV_TARIFA_TOTAL 
      WHERE k_tarifa = LK_ID_NUEVA_TARIFA;
-    
+
     pm_mensaje := pm_mensaje || ' -> La tarifa para la reserva ' || pk_reserva || ' ha sido generada correctamente';    
 
      pc_error := 0;-- Se encontró un responsable
@@ -190,7 +190,7 @@ PROCEDURE PR_CALCULAR_TARIFA_CANCELACION(pk_reserva         IN reserva.k_reserva
                                          pm_mensaje         OUT VARCHAR2,
                                          pc_error           OUT NUMBER,
                                          pm_error           OUT VARCHAR2) IS 
-                                     
+
     LK_ID_NUEVA_TARIFA  TARIFA.K_TARIFA%TYPE;
     lf_fecha_cupo       cupo.f_cupo%TYPE;
     LV_DIAS_ANTELACION  NUMBER;
@@ -198,20 +198,20 @@ PROCEDURE PR_CALCULAR_TARIFA_CANCELACION(pk_reserva         IN reserva.k_reserva
     LV_TARIFA_MULTA     tarifa.v_valor_tarifa%TYPE;
     LV_TARIFA_ORIGINAL  TARIFA.v_valor_tarifa%TYPE;
     LK_CANCELACION      cancelacion_reserva.k_cancelacion%TYPE;
-    
+
     EX_PARAMETRO_NO_ENCONTRADO      EXCEPTION;
 
 BEGIN
     LV_TARIFA_MULTA := 0;
-    
-    
+
+
     --Se busca la fecha en la que se iba a realizar el paso
     SELECT cupo.f_cupo
       INTO lf_fecha_cupo
       FROM RESERVA  RESE
       JOIN cupo     cupo ON cupo.k_cupo      = rese.k_cupo
      WHERE rese.k_reserva = pk_reserva;
-     
+
     -- Se calcula la cantidad de día de anterioridad para la cancelación
     SELECT TRUNC(TO_DATE(lf_fecha_cupo,'DD/MM/YYYY HH24:MI:SS')) - TRUNC(SYSDATE) 
       INTO LV_DIAS_ANTELACION
@@ -223,17 +223,17 @@ BEGIN
       FROM PARAMETRO
      WHERE V_RANGO_INI <=  LV_DIAS_ANTELACION AND LV_DIAS_ANTELACION <= V_RANGO_FIN
        AND k_tipo_parametro = 4;-- TIPO_PARAMETRO "CANCELACIÓN"
- 
+
     SELECT V_VALOR_TARIFA 
       INTO LV_TARIFA_ORIGINAL
       FROM TARIFA
      WHERE K_TIPO_TARIFA = 1 -- TIPO "TARIFA RESERVA"
        AND K_RESERVA = PK_RESERVA;
-     
+
      LV_TARIFA_MULTA := LV_TARIFA_ORIGINAL * LV_PORCENTAJE_MULTA / 100;
-    
+
     lk_cancelacion := SEQ_CANCELACION_RESERVA.NEXTVAL;
-    
+
     INSERT 
       INTO cancelacion_reserva (
                 k_cancelacion,
@@ -248,10 +248,10 @@ BEGIN
                 pk_agente,
                 Pk_reserva
             );
-            
+
     COMMIT;
     LK_ID_NUEVA_TARIFA := SEQ_TARIFA.NEXTVAL;
-    
+
     INSERT 
       INTO tarifa (
                     k_tarifa,
@@ -302,18 +302,82 @@ END PR_CALCULAR_TARIFA_CANCELACION;
                                                                 0 =  Si no hay error
                                 pm_error        Mensaje de error correspondiente al error, null si no hay error
     Precondiciones: El código de conjunto es válido
-   
+
 ----------------------------------------------------------------------------------------------*/
 PROCEDURE PR_REGISTRAR_RESERVA( pk_cupo          IN cupo.k_cupo%TYPE,
-                                idAgente         IN agente.k_id_agente%TYPE,
-                                
+                                pk_idAgente      IN agente.k_id_agente%TYPE,
+                                pk_buque         IN buque.k_num_serie%TYPE,
                                 pm_mensaje       OUT VARCHAR2,
                                 pc_error         OUT NUMBER,
                                 pm_error         OUT VARCHAR2) IS
 
-
+    LN_COD_CLIENTE      COMPANIA.N_COD_CLIENTE%TYPE;
+    LV_ID_PERIODO       periodo.k_id_periodo%TYPE;
+    lf_fecha_cupo       cupo.f_cupo%TYPE;
+    LV_DIAS_ANTES_PASO  NUMBER;
+    lk_reserva          reserva.k_reserva%TYPE;
 BEGIN
+    SELECT N_COD_CLIENTE
+      INTO LN_COD_CLIENTE
+      FROM COMPANIA
+     WHERE k_id_cliente = (SELECT k_id_compania 
+                             FROM AGENTE 
+                            WHERE K_ID_AGENTE = pk_idAgente);
 
+      SELECT cupo.f_cupo
+      INTO lf_fecha_cupo
+      FROM cupo 
+     where cupo.k_cupo      = pk_cupo;
+
+    -- Se calcula la cantidad de días antes del paso
+    SELECT TRUNC(TO_DATE(lf_fecha_cupo,'DD/MM/YYYY HH24:MI:SS')) - TRUNC(SYSDATE) 
+      INTO lv_dias_antes_paso
+      FROM DUAL;
+
+    -- Se obtiene el período en el que se está realizando la reserva
+        SELECT K_ID_PERIODO
+          INTO LV_ID_PERIODO
+          FROM PERIODO
+         WHERE v_dias_antes_min <= lv_dias_antes_paso AND lv_dias_antes_paso <= v_dias_antes_max;
+        
+    LK_RESERVA := SEQ_RESERVA.NEXTVAL;
+    INSERT INTO reserva (
+            k_reserva,
+            n_cod_cliente,
+            k_id_buque,
+            f_reserva,
+            k_cupo,
+            k_agente,
+            k_periodo,
+            i_estado,
+            n_usuario_modifica_estado,
+            f_fecha_modifica_estado
+        ) VALUES (
+            LK_RESERVA,
+            LN_COD_CLIENTE,
+            pk_buque,
+            sysdate,
+            pk_cupo,
+            pk_idAgente,
+            LV_ID_PERIODO,
+            'PENDIENTE',
+            null,
+            null
+        );
+        commit;
+     pm_mensaje := pm_mensaje || ' -> La reserva ' || lk_reserva || ' ha sido registrada correctamente';    
+
+     pc_error := 0;-- Se encontró un responsable
+     pm_error := NULL;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        pc_error := 1; 
+        pm_error := '---> ERROR: UNO DE LOS PARÁMETROS PARA REGISTRAR LA RESERVA';
+        ROLLBACK;
+    WHEN OTHERS THEN
+        pc_error := 1; 
+        pm_error := '---> ERROR: Código = ' || sqlcode || '; Mensaje: ' || sqlerrm;   
+        ROLLBACK;
 END PR_REGISTRAR_RESERVA;
 
 
