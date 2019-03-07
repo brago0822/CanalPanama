@@ -46,28 +46,33 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Listado de Cupos Disponibles</h3>
+              <h3 class="box-title">Listado de Reservas</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead class="thead-dark">
                 <tr>
-							<th>id</th>
-							<th>Esclusa</th>
-							<th>Sentido</th>
-							<th>Fecha</th>
-							<th>Tipo</th>	
+							<th scope="col">Código Cliente</th>
+							<th scope="col">Fecha Reserva Realizada</th>
+							<th scope="col">Fecha Futuro Paso</th>
+							<th scope="col">Tipo Buque</th>
+							<th scope="col">Sentido</th>	
+							<th scope="col">Período</th>
+							<th scope="col">Estado</th>
+							
 						</tr>
 				</thead>
 					<tbody>
-						<tr th:each="cupo: ${listadoCupos}">
-							<td th:text="${cupo.id}"></td>
-							<td th:text="${cupo.tipo_esclusa}"></td>
-							<td th:text="${cupo.sentido}"></td>
-							<td th:text="${cupo.fecha}"></td>
-							<td th:text="${cupo.tipo_cupo}"></td>
-							<td><a href="#" class = "btn btn-success btn-sm mb-3">Reservar</a></td>
+						<tr th:each="reserva: ${listadoReservas}">
+							<td th:text="${reserva.codigoCliente}"></td>
+							<td th:text="${reserva.fechaReservaRealizada}"></td>
+							<td th:text="${reserva.fechaFuturoPaso}"></td>
+							<td th:text="${reserva.tipoBuque}"></td>
+							<td th:text="${reserva.sentido}"></td>
+							<td th:text="${reserva.periodo}"></td>
+							<td th:text="${reserva.estado}"></td>
+							<td><a href="#" class = "btn btn-danger btn-sm mb-3">Cancelar</a></td>
 						</tr>
 					</tbody>
 				</table>

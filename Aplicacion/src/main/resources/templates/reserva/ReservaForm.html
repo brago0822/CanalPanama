@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Registrar Reserva</title>
+</head>
+
+<body>
+
+	<div class="container">
+	
+
+		<hr>
+		
+		<p class="h4 mb-4">Registrar Reserva</p>
+	
+		<form action="#" th:action="@{/reserva/save}"
+						 th:object="${reserva}" method="POST">
+		
+			<input type="text" th:field="*{codCliente}"
+					class="form-control mb-4 col-4" placeholder="Código de Cliente">
+
+			<input type="text" th:field="*{idBuque}"
+					class="form-control mb-4 col-4" placeholder="ID de Buque">
+
+			<input type="text" th:field="*{idCupo}"
+					class="form-control mb-4 col-4" placeholder="ID Cupo Elegido">
+			
+			<input type="text" th:field="*{idAgente}"
+					class="form-control mb-4 col-4" placeholder="Código de Agente">
+
+			<input type="text" th:field="*{idPeriodo}"
+					class="form-control mb-4 col-4" placeholder="ID del Período">
+
+			<input type="text" th:field="*{idEstado}"
+					class="form-control mb-4 col-4" placeholder="Estado Reserva">			
+			<button type="submit" class="btn btn-info col-2">Finalizar Reserva</button>
+						
+		</form>
+	
+		<hr>
+		<a th:href="@{/cupos/list}">Volver a listado de Cupos Disponibles</a>
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

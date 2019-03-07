@@ -71,20 +71,20 @@ VALUES (3,4,3,80,500,5000);
 -----------------------------------------------------------------------------------------
 ------ INSERCIÓN DE DATOS EN CUPO
 -----------------------------------------------------------------------------------------
-INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (1,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
-INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (2,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
-INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (3,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
-INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (4,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
-INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (5,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
-INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (6,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
-INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo) 
-VALUES (7,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL');
+INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo, n_estado) 
+VALUES (1,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL','CREADO');
+INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo, n_estado) 
+VALUES (2,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL','CREADO');
+INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo, n_estado) 
+VALUES (3,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL','ASIGNADO');
+INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo, n_estado) 
+VALUES (4,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL','ASIGNADO');
+INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo, n_estado) 
+VALUES (5,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL','CREADO');
+INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo, n_estado) 
+VALUES (6,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL','CREADO');
+INSERT INTO Cupo (k_cupo, n_tipo_esclusa,n_sentido,f_cupo,n_tipo_cupo, n_estado) 
+VALUES (7,'NEOPANAMAX','NORTE',TO_DATE('10/06/2019','DD/MM/YYYY'),'NORMAL','CREADO');
 
 -----------------------------------------------------------------------------------------
 ------ INSERCIÓN DE DATOS EN MEDIO_PAGO
@@ -162,3 +162,64 @@ INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_para
 VALUES (18,'SUBASTA_SUPER',0,0,7,35000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
 INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
 VALUES (19,'SUBASTA_REGULAR',0,0,7,15000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
+
+
+----- INSERCIÓN DE DATOS DE PERÍODOS
+INSERT INTO periodo (k_id_periodo,n_nombre,v_dias_antes_min,v_dias_antes_max,n_descripcion)
+VALUES (1,'PERIODO 1',22,365,'PERIODO NORMAL');
+INSERT INTO periodo (k_id_periodo,n_nombre,v_dias_antes_min,v_dias_antes_max,n_descripcion)
+VALUES (2,'PERIODO 2',4,21,'PERIODO NORMAL');
+INSERT INTO periodo (k_id_periodo,n_nombre,v_dias_antes_min,v_dias_antes_max,n_descripcion)
+VALUES (3,'PERIODO 3',2,3,'PERIODO NORMAL');
+INSERT INTO periodo (k_id_periodo,n_nombre,v_dias_antes_min,v_dias_antes_max,n_descripcion)
+VALUES (4,'PERIODO ESPECIAL',366,730,'PERIODO ESPECIAL, PARA COMERCIALES, PASAJEROS');
+----------------------------------------------------------------------
+--- INSERCIÓN DE DATOS DE RESERVA DE PRUEBA
+---- rqeuisitos: PERIODO, BUQUE, AGENTE, CUPO
+----------------------------------------------------------------------
+INSERT INTO reserva (k_reserva,n_cod_cliente, k_id_buque,f_reserva,k_cupo, k_agente, k_periodo, i_estado, n_usuario_modifica_estado,f_fecha_modifica_estado)
+     VALUES (1,'CODCLIE1', 1, '10/06/2019', 1,1,1,'PENDIENTE',NULL,NULL);
+INSERT INTO reserva (k_reserva,n_cod_cliente, k_id_buque,f_reserva,k_cupo, k_agente, k_periodo, i_estado, n_usuario_modifica_estado,f_fecha_modifica_estado)
+     VALUES (2,'CODCLIE1', 1, '10/06/2019', 2,1,1,'CANCELADA',NULL,NULL);
+INSERT INTO reserva (k_reserva,n_cod_cliente, k_id_buque,f_reserva,k_cupo, k_agente, k_periodo, i_estado, n_usuario_modifica_estado,f_fecha_modifica_estado)
+     VALUES (3,'CODCLIE1', 1, '10/06/2019', 3,2,1,'FINALIZADA',NULL,NULL);
+INSERT INTO reserva (k_reserva,n_cod_cliente, k_id_buque,f_reserva,k_cupo, k_agente, k_periodo, i_estado, n_usuario_modifica_estado,f_fecha_modifica_estado)
+     VALUES (4,'CODCLIE1', 1, '10/06/2019', 4,2,1,'PAGADA',NULL,NULL);
+
+-----------------------------------------------------------------------
+--- INSERCIÓN DATOS DE CANCELACION_RESERVA 
+-----------------------------------------------------------------------
+INSERT INTO cancelacion_reserva (k_cancelacion, f_cancelacion, v_dias_antelacion, id_agente, k_reserva) 
+VALUES (1, SYSDATE, 120, 1, 2);
+------------------------------------------------------------------
+-- INSERCIÓN DE DATOS EN TIPO_TARIFA
+INSERT INTO tipo_tarifa ( k_tipo_tarifa, n_nombre_tarifa, n_descripcion)
+VALUES (1,'TARIFA RESERVA','TARIFA GENERADA AL REALIZAR UNA RESERVA');
+INSERT INTO tipo_tarifa ( k_tipo_tarifa, n_nombre_tarifa, n_descripcion)
+VALUES (2,'TARIFA CANCELACION','TARIFA GENERADA AL CANCELAR UNA RESERVA');
+INSERT INTO tipo_tarifa ( k_tipo_tarifa, n_nombre_tarifa, n_descripcion)
+VALUES (3,'TARIFA PASO','TARIFA GENERADA AL REALIZAR EL PASO EN TIEMO REAL POR EL CANAL');
+------------------------------------------------------------------
+-----------------------------------------------------------------------
+----- INSERCIÓN DE DATOS EN TARIFA
+---- REQUISITOS SERVICIO_COBRADO
+-----------------------------------------------------------------------SELECT * FROM TARIFA;
+INSERT INTO tarifa (k_tarifa,v_valor_tarifa, f_calculo, k_tipo_tarifa, n_usuario_modifica, f_fecha_modifica,k_reserva,k_paso,k_cancelacion)
+VALUES (1,17500,SYSDATE,1,NULL,NULL,NULL,NULL,1);
+INSERT INTO tarifa (k_tarifa,v_valor_tarifa, f_calculo, k_tipo_tarifa, n_usuario_modifica, f_fecha_modifica,k_reserva,k_paso,k_cancelacion)
+VALUES (2,60000,SYSDATE,2,NULL,NULL,2,NULL,NULL);
+-----------------------------------------------------------------------
+------ INSERCIÓN DATOS DETALLE_TARIFA
+--- REQUISITOS: TARIFA Y PARAMETRO
+-----------------------------------------------------------------------
+--** DETALLE DE LA CANCELACIÓN 1
+INSERT INTO detalle_tarifa ( k_detalle_tarifa, k_tarifa, k_parametro) 
+VALUES (1,1,14);
+
+--** DETALLE DE LA RESERVA 1
+INSERT INTO detalle_tarifa ( k_detalle_tarifa, k_tarifa, k_parametro) 
+VALUES (2,2,3); --TARIFA PARA PARÁMETRO BEAM3
+INSERT INTO detalle_tarifa ( k_detalle_tarifa, k_tarifa, k_parametro) 
+VALUES (3,2,7);-- TARIFA PARA PARÁMETRO LOA3
+
+
