@@ -123,7 +123,7 @@ BEGIN
     );
     COMMIT;
     -- Se calcula la cantidad de días antes del paso
-    SELECT TRUNC(TO_DATE(lf_fecha_cupo,'DD/MM/YYYY HH24:MI:SS')) - TRUNC(SYSDATE) 
+    SELECT TRUNC(lf_fecha_cupo) - TRUNC(SYSDATE) 
       INTO lv_dias_antes_paso
       FROM DUAL;
 
@@ -213,7 +213,7 @@ BEGIN
      WHERE rese.k_reserva = pk_reserva;
 
     -- Se calcula la cantidad de día de anterioridad para la cancelación
-    SELECT TRUNC(TO_DATE(lf_fecha_cupo,'DD/MM/YYYY HH24:MI:SS')) - TRUNC(SYSDATE) 
+    SELECT TRUNC(lf_fecha_cupo) - TRUNC(SYSDATE) 
       INTO LV_DIAS_ANTELACION
       FROM DUAL;
 
