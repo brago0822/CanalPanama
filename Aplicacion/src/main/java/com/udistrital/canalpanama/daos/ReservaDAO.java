@@ -1,5 +1,6 @@
 package com.udistrital.canalpanama.daos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import com.udistrital.canalpanama.modelo.VReserva;
 import com.udistrital.canalpanama.util.ODBManager;
+import oracle.jdbc.OracleTypes;
+
 
 @Repository
 public class ReservaDAO {
@@ -53,5 +56,51 @@ public class ReservaDAO {
 		}
 		return listadoReservas;
 	}
+	
+	public String registrarReservas(int idCupo, int idAgente, int idBuque) throws Exception {
+		Connection conexion = odbManager.tomarConexion();
+		Statement st = null;
+		String mensaje  = "";
+        int codError 	 = 0;
+        String msjError = "";
+        
+		try {
+
+			if(conexion == null) {
+				throw new SQLException("No loggeado");
+			}
+			else {
+				 st = conexion.createStatement();
+			     //ResultSet rec = st.executeQuery("SELECT * FROM V_LISTADO_RESERVAS");// WHERE ID = '"+idSubasta+"'"); Se debería agregar un estado a la subasta ACTIVO=SI/NO
+				 CallableStatement cst = conexion.prepareCall("{call PK_RESERVA.PR_REGISTRAR_RESERVA(?,?,?,?,?,?)}");
+			     cst.setInt(1, idCupo);
+			     cst.setInt(2, idAgente);
+	             cst.setInt(3, idBuque);
+	             // Definimos los tipos de los parametros de salida del procedimiento almacenado
+	             cst.registerOutParameter(4, java.sql.Types.VARCHAR);
+	             cst.registerOutParameter(5, java.sql.Types.INTEGER);
+	             cst.registerOutParameter(6, java.sql.Types.VARCHAR);
+				 
+				 cst.execute();
+				 
+				 mensaje  = cst.getString(5);
+	             codError 	 = cst.getInt(5);
+	             msjError = cst.getString(6);
+			      
+			}
+		} catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	    	st.close();
+		      odbManager.liberarConexion();
+    	}
+    	
+		/*if (msjError != null || msjError != ""){
+			return "ERROR: Código Error: "+ codError + "; MensajeError: "+ msjError;
+			
+		}*/
+		return "Mensaje:" + mensaje;		
+	}
+	
 	
 }

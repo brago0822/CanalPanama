@@ -317,6 +317,7 @@ PROCEDURE PR_REGISTRAR_RESERVA( pk_cupo          IN cupo.k_cupo%TYPE,
     LV_DIAS_ANTES_PASO  NUMBER;
     lk_reserva          reserva.k_reserva%TYPE;
 BEGIN
+    lv_dias_antes_paso:= 0;
     SELECT N_COD_CLIENTE
       INTO LN_COD_CLIENTE
       FROM COMPANIA
@@ -330,7 +331,7 @@ BEGIN
      where cupo.k_cupo      = pk_cupo;
 
     -- Se calcula la cantidad de días antes del paso
-    SELECT TRUNC(TO_DATE(lf_fecha_cupo,'DD/MM/YYYY HH24:MI:SS')) - TRUNC(SYSDATE) 
+    SELECT TRUNC(lf_fecha_cupo) - TRUNC(SYSDATE) 
       INTO lv_dias_antes_paso
       FROM DUAL;
 
@@ -339,7 +340,7 @@ BEGIN
           INTO LV_ID_PERIODO
           FROM PERIODO
          WHERE v_dias_antes_min <= lv_dias_antes_paso AND lv_dias_antes_paso <= v_dias_antes_max;
-        
+
     LK_RESERVA := SEQ_RESERVA.NEXTVAL;
     INSERT INTO reserva (
             k_reserva,

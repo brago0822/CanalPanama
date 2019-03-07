@@ -67,7 +67,7 @@
 							<td th:text="${cupo.sentido}"></td>
 							<td th:text="${cupo.fecha}"></td>
 							<td th:text="${cupo.tipo_cupo}"></td>
-							<td><a href="#" class = "btn btn-success btn-sm mb-3">Reservar</a></td>
+							<td><a style="cursor:pointer;" onclick="$('#ContentContainer').load('reserva/registrar')" class = "btn btn-success btn-sm mb-3">Reservar</a></td>
 						</tr>
 					</tbody>
 				</table>

@@ -37,5 +37,24 @@ public class ReservaController {
 		odbManager.liberarConexion();
     	return "reserva/ListadoReservas";
 	}
+	
+	@GetMapping("/registrar")
+	public String registrar(Model model) throws Exception {
+		String res = "";
+		try {
+			res = reservaDao.registrarReservas(5,2,3);
+			model.addAttribute("msjRegistroReserva", res);
+			List<VReserva> res2 = new ArrayList<>();
+			res2 = reservaDao.listarReservas();
+			model.addAttribute("listadoReservas", res2);
+	    }catch(Exception e) {
+	    	model.addAttribute("msjRegistroReserva", "Error al registrar la reserva. "+e.getMessage());
+	    } 	finally {
+	    	odbManager.liberarConexion();
+	    }
+
+		odbManager.liberarConexion();
+    	return "reserva/ListadoReservas";
+	}
 
 }
