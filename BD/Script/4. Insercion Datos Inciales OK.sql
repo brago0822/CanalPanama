@@ -162,6 +162,15 @@ INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_para
 VALUES (18,'SUBASTA_SUPER',0,0,7,35000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
 INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
 VALUES (19,'SUBASTA_REGULAR',0,0,7,15000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
+-- *** PARAMETROS PERIODO
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (20,'PERIODO 1',1,1,5,5000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (21,'PERIODO 2',2,2,5,4000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (22,'PERIODO 3',3,3,5,3000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
+INSERT INTO parametro (k_parametro,n_nombre,v_rango_ini,v_rango_fin, k_tipo_parametro, v_valor_parametro, f_vigencia_ini,f_vigencia_fin)
+VALUES (23,'PERIODO ESPECIAL',4,4,5,2000,'01/01/2019','31/12/2019');-- VALOR EN DOLARES PARA TOPE MÍNIMO
 
 
 ----- INSERCIÓN DE DATOS DE PERÍODOS
@@ -178,13 +187,13 @@ VALUES (4,'PERIODO ESPECIAL',366,730,'PERIODO ESPECIAL, PARA COMERCIALES, PASAJE
 ---- rqeuisitos: PERIODO, BUQUE, AGENTE, CUPO
 ----------------------------------------------------------------------
 INSERT INTO reserva (k_reserva,n_cod_cliente, k_id_buque,f_reserva,k_cupo, k_agente, k_periodo, i_estado, n_usuario_modifica_estado,f_fecha_modifica_estado)
-     VALUES (1,'CODCLIE1', 1, '10/06/2019', 1,1,1,'PENDIENTE',NULL,NULL);
+     VALUES (1,'CODCLIE1', 1, SYSDATE, 1,1,1,'PENDIENTE',NULL,NULL);
 INSERT INTO reserva (k_reserva,n_cod_cliente, k_id_buque,f_reserva,k_cupo, k_agente, k_periodo, i_estado, n_usuario_modifica_estado,f_fecha_modifica_estado)
-     VALUES (2,'CODCLIE1', 1, '10/06/2019', 2,1,1,'CANCELADA',NULL,NULL);
+     VALUES (2,'CODCLIE1', 1, SYSDATE, 2,1,1,'CANCELADA',NULL,NULL);
 INSERT INTO reserva (k_reserva,n_cod_cliente, k_id_buque,f_reserva,k_cupo, k_agente, k_periodo, i_estado, n_usuario_modifica_estado,f_fecha_modifica_estado)
-     VALUES (3,'CODCLIE1', 1, '10/06/2019', 3,2,1,'FINALIZADA',NULL,NULL);
+     VALUES (3,'CODCLIE1', 1, SYSDATE, 3,2,1,'FINALIZADA',NULL,NULL);
 INSERT INTO reserva (k_reserva,n_cod_cliente, k_id_buque,f_reserva,k_cupo, k_agente, k_periodo, i_estado, n_usuario_modifica_estado,f_fecha_modifica_estado)
-     VALUES (4,'CODCLIE1', 1, '10/06/2019', 4,2,1,'PAGADA',NULL,NULL);
+     VALUES (4,'CODCLIE1', 1, SYSDATE, 4,2,1,'PAGADA',NULL,NULL);
 
 -----------------------------------------------------------------------
 --- INSERCIÓN DATOS DE CANCELACION_RESERVA 
@@ -205,9 +214,10 @@ VALUES (3,'TARIFA PASO','TARIFA GENERADA AL REALIZAR EL PASO EN TIEMO REAL POR E
 ---- REQUISITOS SERVICIO_COBRADO
 -----------------------------------------------------------------------SELECT * FROM TARIFA;
 INSERT INTO tarifa (k_tarifa,v_valor_tarifa, f_calculo, k_tipo_tarifa, n_usuario_modifica, f_fecha_modifica,k_reserva,k_paso,k_cancelacion)
-VALUES (1,17500,SYSDATE,1,NULL,NULL,NULL,NULL,1);
+VALUES (1,17500,SYSDATE,1,NULL,NULL,1,NULL,NULL);
 INSERT INTO tarifa (k_tarifa,v_valor_tarifa, f_calculo, k_tipo_tarifa, n_usuario_modifica, f_fecha_modifica,k_reserva,k_paso,k_cancelacion)
-VALUES (2,60000,SYSDATE,2,NULL,NULL,2,NULL,NULL);
+VALUES (2,60000,SYSDATE,2,NULL,NULL,NULL,NULL,2);
+
 -----------------------------------------------------------------------
 ------ INSERCIÓN DATOS DETALLE_TARIFA
 --- REQUISITOS: TARIFA Y PARAMETRO

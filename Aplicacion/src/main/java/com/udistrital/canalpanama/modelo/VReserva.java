@@ -1,6 +1,8 @@
 package com.udistrital.canalpanama.modelo;
 
 public class VReserva {
+	public int	  idReserva;
+	public int 	  idAgente;
 	public String codigoCliente;
 	public String fechaReservaRealizada;
 	public String fechaFuturoPaso;
@@ -8,6 +10,20 @@ public class VReserva {
 	public String sentido;
 	public String periodo;
 	public String estado;
+	
+	
+	public int getIdReserva() {
+		return idReserva;
+	}
+	public void setIdReserva(int idReserva) {
+		this.idReserva = idReserva;
+	}
+	public int getIdAgente() {
+		return idAgente;
+	}
+	public void setIdAgente(int idAgente) {
+		this.idAgente = idAgente;
+	}
 	public String getCodigoCliente() {
 		return codigoCliente;
 	}

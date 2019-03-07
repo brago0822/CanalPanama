@@ -34,13 +34,15 @@ public class ReservaDAO {
 		     }*/
 		     while (rec.next()) {
 		    	  VReserva vReserva = new VReserva();
-		    	  vReserva.setCodigoCliente(rec.getString(1));
-		    	  vReserva.setFechaReservaRealizada(rec.getString(2));
-		    	  vReserva.setFechaFuturoPaso(rec.getString(3));
-		    	  vReserva.setTipoBuque(rec.getString(4)); 
-		    	  vReserva.setSentido(rec.getString(5));
-		    	  vReserva.setPeriodo(rec.getString(6));
-		    	  vReserva.setEstado(rec.getString(7));
+		    	  vReserva.setIdReserva(rec.getInt(1));
+		    	  vReserva.setIdAgente(rec.getInt(2));
+		    	  vReserva.setCodigoCliente(rec.getString(3));
+		    	  vReserva.setFechaReservaRealizada(rec.getString(4));
+		    	  vReserva.setFechaFuturoPaso(rec.getString(5));
+		    	  vReserva.setTipoBuque(rec.getString(6)); 
+		    	  vReserva.setSentido(rec.getString(7));
+		    	  vReserva.setPeriodo(rec.getString(8));
+		    	  vReserva.setEstado(rec.getString(9));
 		    	  
 		    	  listadoReservas.add(vReserva);
 		      }
